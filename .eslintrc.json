@@ -1,0 +1,16 @@
+{
+    "plugins": ["prettier"],
+    "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+    "env": {
+        "browser": true,
+        "node": false
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "ignorePatterns": ["node_modules/"],
+    "rules": {
+        "prettier/prettier": "warn"
+    }
+}
