@@ -13,7 +13,8 @@ const initialData = {
 const reducer = handleActions(
   {
     [garlandActions.getLevelingActionSuccess]: (state, action) => ({
-      levelingData: action.payload,
+      ...state,
+      levelingData: action.payload.data,
     }),
   },
   initialData
