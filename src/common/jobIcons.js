@@ -18,14 +18,14 @@ import Scholar from '../assets/img/icon/scholar.png';
 import Astrologian from '../assets/img/icon/astrologian.png';
 
 // craft job
-import Carpenter from '../assets/img/icon/carpenter.png';
-import Blacksmith from '../assets/img/icon/blacksmith.png';
-import Armorer from '../assets/img/icon/armorer.png';
-import Goldsmith from '../assets/img/icon/goldsmith.png';
-import Leatherworker from '../assets/img/icon/leatherworker.png';
-import Weaver from '../assets/img/icon/weaver.png';
-import Alchemist from '../assets/img/icon/alchemist.png';
-import Culinarian from '../assets/img/icon/culinarian.png';
+import { ReactComponent as Carpenter } from '../assets/img/icon/class_job_008.svg';
+import { ReactComponent as Blacksmith } from '../assets/img/icon/class_job_009.svg';
+import { ReactComponent as Armorer } from '../assets/img/icon/class_job_010.svg';
+import { ReactComponent as Goldsmith } from '../assets/img/icon/class_job_011.svg';
+import { ReactComponent as Leatherworker } from '../assets/img/icon/class_job_012.svg';
+import { ReactComponent as Weaver } from '../assets/img/icon/class_job_013.svg';
+import { ReactComponent as Alchemist } from '../assets/img/icon/class_job_014.svg';
+import { ReactComponent as Culinarian } from '../assets/img/icon/class_job_015.svg';
 
 export const actionJobIcons = {
   Paladin,

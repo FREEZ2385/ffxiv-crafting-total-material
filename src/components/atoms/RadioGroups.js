@@ -1,0 +1,40 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-key */
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Radio } from 'antd';
+import Icon from '@ant-design/icons';
+import './scss/RadioGroup.scss';
+
+function RadioGroup(props) {
+  // eslint-disable-next-line react/prop-types
+  const { options, onChange } = props;
+  return (
+    <div className="radio-group">
+      <Radio.Group optionType="button" buttonStyle="solid" onChange={onChange}>
+        {options.map((row) => (
+          <Radio.Button value={row.value}>
+            <Icon component={row.icon} style={{ marginRight: 5 }} />
+            {row.text}
+          </Radio.Button>
+        ))}
+      </Radio.Group>
+    </div>
+  );
+}
+RadioGroup.PropTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      text: PropTypes.number.isRequired,
+      icon: PropTypes.elementType,
+    })
+  ).isRequired,
+  onChange: PropTypes.func,
+};
+
+RadioGroup.defaultProps = {
+  onChange: () => {},
+};
+
+export default RadioGroup;

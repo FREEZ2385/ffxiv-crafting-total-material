@@ -3,6 +3,8 @@ import { ProfileOutlined, AppstoreAddOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import './App.css';
 
+import CrafterRecipes from './components/pages/CrafterRecipes';
+
 function App() {
   const { Footer, Sider, Content } = Layout;
 
@@ -18,6 +20,8 @@ function App() {
     setRightSideBarCollapsed(!isCollapsed);
   };
 
+  const [pageKey, setPageKey] = useState('Crafter Recipes');
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider
@@ -30,17 +34,24 @@ function App() {
           {leftSideBarCollapsed && <text>CTM</text>}
         </div>
 
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-          <Menu.Item key="1" icon={<ProfileOutlined />}>
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={[pageKey]}
+          mode="inline"
+          onClick={(item) => setPageKey(item.key)}
+        >
+          <Menu.Item key="Crafter Recipes" icon={<ProfileOutlined />}>
             Crafter Recipes
           </Menu.Item>
-          <Menu.Item key="2" icon={<AppstoreAddOutlined />}>
+          <Menu.Item key="Leveling Jobs" icon={<AppstoreAddOutlined />}>
             Leveling Jobs
           </Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">
-        <Content style={{ margin: '0 16px' }}>test</Content>
+        <Content style={{ margin: '0 16px' }}>
+          {pageKey === 'Crafter Recipes' && <CrafterRecipes />}
+        </Content>
         <Footer style={{ textAlign: 'center' }}>
           Lee Freez ©2021 Created by Lee Freez
         </Footer>
