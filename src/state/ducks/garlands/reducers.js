@@ -8,6 +8,7 @@ import garlandActions from './actions';
 
 const initialData = {
   levelingData: [],
+  craftRecipeList: [],
 };
 
 const reducer = handleActions(
@@ -15,6 +16,11 @@ const reducer = handleActions(
     [garlandActions.getLevelingActionSuccess]: (state, action) => ({
       ...state,
       levelingData: action.payload.data,
+    }),
+
+    [garlandActions.getCraftRecipeListSuccess]: (state, action) => ({
+      ...state,
+      craftRecipeList: action.payload.data,
     }),
   },
   initialData

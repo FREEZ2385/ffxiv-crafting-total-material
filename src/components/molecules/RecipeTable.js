@@ -1,0 +1,74 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-key */
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Table, Image, Button } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
+
+function RecipeTable(props) {
+  // eslint-disable-next-line react/prop-types
+  const { columns, data, onAddButtonClick } = props;
+
+  const addfilteredcolumns = () => {
+    const newFilteredColumns = columns.map((column) => {
+      if (column.name === 'icon') {
+        return {
+          title: column.title,
+          dataIndex: column.name,
+          key: column.name,
+          width: column.width,
+          align: column.align,
+          // eslint-disable-next-line react/display-name
+          render: (icon) => <Image width={40} placeholder={false} src={icon} />,
+        };
+      }
+      return {
+        title: column.title,
+        dataIndex: column.name,
+        key: column.name,
+        width: column.width,
+        align: column.align,
+      };
+    });
+    newFilteredColumns.push({
+      title: '',
+      dataIndex: 'id',
+      key: 'id',
+      // eslint-disable-next-line react/display-name
+      render: (id) => (
+        <Button
+          type="primary"
+          shape="circle"
+          icon={<PlusOutlined />}
+          size="middle"
+          style={{ margin: 5 }}
+          onClick={onAddButtonClick(id)}
+        />
+      ),
+    });
+    return newFilteredColumns;
+  };
+
+  const addfilteredDatas = () => {
+    const newFilteredDatas = data.map((dat, index) => {
+      return { ...dat, key: index };
+    });
+    return newFilteredDatas;
+  };
+
+  return (
+    <Table columns={addfilteredcolumns()} dataSource={addfilteredDatas()} />
+  );
+}
+
+RecipeTable.PropTypes = {
+  columns: PropTypes.arrayOf(PropTypes.string).isRequired,
+  data: PropTypes.array.isRequired,
+  onAddButtonClick: PropTypes.func,
+};
+
+RecipeTable.defaultProps = {
+  onAddButtonClick: () => {},
+};
+
+export default RecipeTable;

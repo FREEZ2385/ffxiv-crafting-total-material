@@ -8,6 +8,9 @@ import { createActions } from 'redux-actions';
 const garlandsActions = createActions({
   getLevelingAction: () => ({}),
   getLevelingActionSuccess: (data) => ({ data }),
+
+  getCraftRecipeList: (jobName, recipeCode) => ({ jobName, recipeCode }),
+  getCraftRecipeListSuccess: (data) => ({ data }),
 });
 
 export default garlandsActions;
