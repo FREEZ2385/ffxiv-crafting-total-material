@@ -11,6 +11,8 @@ const garlandsActions = createActions({
 
   getCraftRecipeList: (jobName, recipeCode) => ({ jobName, recipeCode }),
   getCraftRecipeListSuccess: (data) => ({ data }),
+
+  addCraftingList: (itemData) => ({ itemData }),
 });
 
 export default garlandsActions;

@@ -9,6 +9,17 @@ import garlandActions from './actions';
 const initialData = {
   levelingData: [],
   craftRecipeList: [],
+  craftingList: [],
+};
+
+const pushCrafingList = (list, value) => {
+  const addedList = list;
+  if (addedList.length > 0) {
+    if (!addedList.some((data) => data.id === value.id)) addedList.push(value);
+  } else {
+    addedList.push(value);
+  }
+  return addedList;
 };
 
 const reducer = handleActions(
@@ -21,6 +32,14 @@ const reducer = handleActions(
     [garlandActions.getCraftRecipeListSuccess]: (state, action) => ({
       ...state,
       craftRecipeList: action.payload.data,
+    }),
+
+    [garlandActions.addCraftingList]: (state, action) => ({
+      ...state,
+      craftingList: pushCrafingList(
+        state.craftingList,
+        action.payload.itemData
+      ),
     }),
   },
   initialData

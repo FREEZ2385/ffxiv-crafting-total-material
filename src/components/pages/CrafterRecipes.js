@@ -14,6 +14,7 @@ import './scss/CrafterRecipes.scss';
 
 function CrafterRecipes() {
   const [radioSelect, setRadioSelect] = useState('');
+  const [pulldownSelect, setPulldownSelect] = useState('');
   const { craftRecipeList } = useSelector((state) => state.garlandsReducer);
 
   const dispatch = useDispatch();
@@ -33,7 +34,15 @@ function CrafterRecipes() {
         <Col span={24} style={{ textAlign: 'center', fontSize: 40 }}>
           <RadioGroup
             options={crafterRecipesRadioOptions}
-            onChange={(e) => setRadioSelect(e.target.value)}
+            onChange={(e) => {
+              dispatch(
+                garlandsActions.getCraftRecipeList(
+                  e.target.value,
+                  pulldownSelect
+                )
+              );
+              setRadioSelect(e.target.value);
+            }}
           />
         </Col>
       </Row>
@@ -47,6 +56,7 @@ function CrafterRecipes() {
                 dispatch(
                   garlandsActions.getCraftRecipeList(radioSelect, value)
                 );
+                setPulldownSelect(value);
               }}
             />
           )}
@@ -61,14 +71,11 @@ function CrafterRecipes() {
               columns={[
                 { name: 'icon', title: '', width: 60, align: 'center' },
                 { name: 'name', title: 'Name', width: '100%', align: 'left' },
-                {
-                  name: 'itemLevel',
-                  title: 'Level',
-                  width: 40,
-                  align: 'center',
-                },
               ]}
               data={craftRecipeList}
+              onAddButtonClick={(value) => {
+                dispatch(garlandsActions.addCraftingList(value));
+              }}
             />
           )}
         </Col>

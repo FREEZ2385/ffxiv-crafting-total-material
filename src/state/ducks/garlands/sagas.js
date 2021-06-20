@@ -1,5 +1,5 @@
-import { getItemInfo, testApi } from './apis';
-import { call, put, takeEvery, all } from 'redux-saga/effects';
+import { getLevelingItemInfo, testApi } from './apis';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import { default as actions } from './actions';
 import recipeTableList from '../../../common/craftRecipeList';
 
@@ -14,17 +14,20 @@ function* doGetLevelingAction() {
 
 function* doGetCraftRecipeList({ payload }) {
   try {
-    const recipeList = recipeTableList[payload.jobName][payload.recipeCode];
-    const responseList = yield all(
-      recipeList.map((itemNo) => call(getItemInfo, 'ja', itemNo))
+    const filteredOption = recipeTableList[payload.jobName][payload.recipeCode];
+    const response = yield call(
+      getLevelingItemInfo,
+      'ja',
+      filteredOption.id,
+      filteredOption.minLevel,
+      filteredOption.maxLevel
     );
-    const itemList = responseList.map((response) => {
-      const data = response.data;
+    const searchList = response.data['results'];
+    const itemList = searchList.map((data) => {
       return {
-        icon: `https://www.garlandtools.org/files/icons/item/${data.item.icon}.png`,
-        name: data.item.name,
-        itemLevel: data.item.ilvl,
-        id: data.item.id,
+        icon: `https://xivapi.com/${data.icon}`,
+        name: data.name,
+        id: data.id,
       };
     });
     yield put(actions.getCraftRecipeListSuccess(itemList));

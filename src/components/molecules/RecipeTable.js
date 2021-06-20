@@ -7,6 +7,7 @@ import { PlusOutlined } from '@ant-design/icons';
 
 function RecipeTable(props) {
   // eslint-disable-next-line react/prop-types
+  // eslint-disable-next-line no-unused-vars
   const { columns, data, onAddButtonClick } = props;
 
   const addfilteredcolumns = () => {
@@ -35,14 +36,13 @@ function RecipeTable(props) {
       dataIndex: 'id',
       key: 'id',
       // eslint-disable-next-line react/display-name
-      render: (id) => (
+      render: () => (
         <Button
           type="primary"
           shape="circle"
           icon={<PlusOutlined />}
           size="middle"
           style={{ margin: 5 }}
-          onClick={onAddButtonClick(id)}
         />
       ),
     });
@@ -57,7 +57,17 @@ function RecipeTable(props) {
   };
 
   return (
-    <Table columns={addfilteredcolumns()} dataSource={addfilteredDatas()} />
+    <Table
+      columns={addfilteredcolumns()}
+      dataSource={addfilteredDatas()}
+      onRow={(record) => {
+        return {
+          onClick: (event) => {
+            if (event.target.cellIndex === 2) onAddButtonClick(record);
+          }, // click row
+        };
+      }}
+    />
   );
 }
 
