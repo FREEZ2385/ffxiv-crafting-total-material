@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 import CrafterRecipes from './components/pages/CrafterRecipes';
+import CraftingList from './components/molecules/CraftingList';
 
 function App() {
   const { Footer, Sider, Content } = Layout;
@@ -67,6 +68,9 @@ function App() {
         <div className="title-area">
           <text>Crafting List</text>
         </div>
+        <Menu theme="dark" inlineIndent={50} mode="inline">
+          <CraftingList collapsed={rightSideBarCollapsed} />
+        </Menu>
       </Sider>
     </Layout>
   );
