@@ -75,6 +75,7 @@ function App() {
           <Menu
             theme="dark"
             inlineIndent={50}
+            selectable={false}
             mode="inline"
             style={{ overflowY: 'auto' }}
           >

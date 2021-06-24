@@ -14,14 +14,49 @@ function CraftingList(props) {
     <>
       {craftingList.map((row, index) => (
         <Menu.Item key={row.name} title={row.name} disabled>
-          {collapsed && (
-            <div>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                paddingLeft: 15,
+              }}
+            >
               <Image
                 width={40}
                 preview={false}
                 placeholder={false}
                 src={row.icon}
               />
+              {!collapsed && (
+                <Typography style={{ marginLeft: 15, color: '#ffffff' }}>
+                  {row.name}
+                </Typography>
+              )}
+            </div>
+            <div
+              style={{
+                display: 'flex',
+              }}
+            >
+              {!collapsed && (
+                <InputNumber
+                  min={1}
+                  max={99}
+                  value={row.ea}
+                  onChange={(value) => onEAChange(index, value)}
+                  style={{
+                    width: 70,
+                    height: 32,
+                    position: 'relative',
+                    margin: 5,
+                  }}
+                />
+              )}
               <Button
                 shape="circle"
                 icon={
@@ -32,7 +67,6 @@ function CraftingList(props) {
                   margin: 5,
                   marginLeft: 20,
                   backgroundColor: '#e6342e',
-                  position: 'absolute',
                 }}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -40,55 +74,7 @@ function CraftingList(props) {
                 }}
               />
             </div>
-          )}
-          {!collapsed && (
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  paddingLeft: 15,
-                }}
-              >
-                <Image
-                  width={40}
-                  preview={false}
-                  placeholder={false}
-                  src={row.icon}
-                />
-                <Typography style={{ marginLeft: 15, color: '#ffffff' }}>
-                  {row.name}
-                </Typography>
-              </div>
-              <div
-                style={{
-                  display: 'flex',
-                  paddingLeft: 15,
-                }}
-              >
-                <InputNumber
-                  min={1}
-                  value={row.ea}
-                  onChange={(value) => onEAChange(index, value)}
-                  style={{ marginRight: 10 }}
-                />
-                <Button
-                  shape="circle"
-                  icon={<MinusOutlined style={{ color: '#ffffff' }} />}
-                  size="middle"
-                  style={{ margin: 5, backgroundColor: '#e6342e' }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onDeleteButton(index);
-                  }}
-                />
-              </div>
-            </div>
-          )}
+          </div>
         </Menu.Item>
       ))}
     </>
