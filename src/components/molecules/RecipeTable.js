@@ -33,16 +33,20 @@ function RecipeTable(props) {
     });
     newFilteredColumns.push({
       title: '',
-      dataIndex: 'id',
-      key: 'id',
+      dataIndex: '',
+      key: '',
       // eslint-disable-next-line react/display-name
-      render: () => (
+      render: (data) => (
         <Button
           type="primary"
           shape="circle"
           icon={<PlusOutlined />}
           size="middle"
           style={{ margin: 5 }}
+          onClick={(e) => {
+            e.stopPropagation();
+            onAddButtonClick(data);
+          }}
         />
       ),
     });
@@ -57,17 +61,7 @@ function RecipeTable(props) {
   };
 
   return (
-    <Table
-      columns={addfilteredcolumns()}
-      dataSource={addfilteredDatas()}
-      onRow={(record) => {
-        return {
-          onClick: (event) => {
-            if (event.target.cellIndex === 2) onAddButtonClick(record);
-          }, // click row
-        };
-      }}
-    />
+    <Table columns={addfilteredcolumns()} dataSource={addfilteredDatas()} />
   );
 }
 

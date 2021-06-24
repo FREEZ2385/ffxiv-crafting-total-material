@@ -19,3 +19,11 @@
 .ant-menu-item-disabled {
   cursor: default;
 }
+
+.crafing-list-area {
+  .ant-menu {
+    .ant-menu.ant-menu-inline-collapsed > .ant-menu-item {
+      padding: 0 calc(50% - 2px / 2);
+    }
+  }
+}

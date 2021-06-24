@@ -3,23 +3,86 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { Image, Menu } from 'antd';
+import { Image, Menu, Typography, InputNumber, Button } from 'antd';
+import { MinusOutlined } from '@ant-design/icons';
 
 function CraftingList(props) {
-  const { collapsed } = props;
+  const { collapsed, onEAChange, onDeleteButton } = props;
   const { craftingList } = useSelector((state) => state.garlandsReducer);
 
   return (
     <>
-      {craftingList.map((row) => (
+      {craftingList.map((row, index) => (
         <Menu.Item key={row.name} title={row.name} disabled>
           {collapsed && (
-            <Image
-              width={40}
-              preview={false}
-              placeholder={false}
-              src={row.icon}
-            />
+            <div>
+              <Image
+                width={40}
+                preview={false}
+                placeholder={false}
+                src={row.icon}
+              />
+              <Button
+                type="secondary"
+                shape="circle"
+                icon={<MinusOutlined />}
+                size="middle"
+                style={{ marginBottom: 60 }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onDeleteButton(index);
+                }}
+              />
+            </div>
+          )}
+          {!collapsed && (
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  paddingLeft: 15,
+                }}
+              >
+                <Image
+                  width={40}
+                  preview={false}
+                  placeholder={false}
+                  src={row.icon}
+                />
+                <Typography style={{ marginLeft: 15, color: '#ffffff' }}>
+                  {row.name}
+                </Typography>
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  paddingLeft: 15,
+                }}
+              >
+                <InputNumber
+                  min={1}
+                  value={row.ea}
+                  onChange={(value) => onEAChange(index, value)}
+                  style={{ marginRight: 10 }}
+                />
+                <Button
+                  type="secondary"
+                  shape="circle"
+                  icon={<MinusOutlined />}
+                  size="middle"
+                  style={{ margin: 5 }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onDeleteButton(index);
+                  }}
+                />
+              </div>
+            </div>
           )}
         </Menu.Item>
       ))}
@@ -29,10 +92,14 @@ function CraftingList(props) {
 
 CraftingList.PropTypes = {
   collapsed: PropTypes.bool,
+  onEAChange: PropTypes.func,
+  onDeleteButton: PropTypes.func,
 };
 
 CraftingList.defaultProps = {
   collapsed: false,
+  onEAChange: () => {},
+  onDeleteButton: () => {},
 };
 
 export default CraftingList;

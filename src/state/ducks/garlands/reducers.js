@@ -22,6 +22,18 @@ const pushCrafingList = (list, value) => {
   return addedList;
 };
 
+const changeCrafingEA = (list, payload) => {
+  const addedList = list;
+  addedList[payload.index].ea = payload.value;
+  return addedList;
+};
+
+const deleteCraftingList = (list, index) => {
+  const addedList = list;
+  addedList.splice(index, 1);
+  return addedList;
+};
+
 const reducer = handleActions(
   {
     [garlandActions.getLevelingActionSuccess]: (state, action) => ({
@@ -36,9 +48,22 @@ const reducer = handleActions(
 
     [garlandActions.addCraftingList]: (state, action) => ({
       ...state,
-      craftingList: pushCrafingList(
+      craftingList: pushCrafingList(state.craftingList, {
+        ...action.payload.itemData,
+        ea: 1,
+      }),
+    }),
+
+    [garlandActions.setCraftingEA]: (state, action) => ({
+      ...state,
+      craftingList: changeCrafingEA(state.craftingList, action.payload),
+    }),
+
+    [garlandActions.deleteCraftingList]: (state, action) => ({
+      ...state,
+      craftingList: deleteCraftingList(
         state.craftingList,
-        action.payload.itemData
+        action.payload.index
       ),
     }),
   },

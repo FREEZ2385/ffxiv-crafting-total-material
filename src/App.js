@@ -1,14 +1,17 @@
 import { Layout, Menu } from 'antd';
 import { ProfileOutlined, AppstoreAddOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
-import './App.css';
+import './App.scss';
 
 import CrafterRecipes from './components/pages/CrafterRecipes';
 import CraftingList from './components/molecules/CraftingList';
+import { useDispatch } from 'react-redux';
+import garlandsActions from './state/ducks/garlands/actions';
 
 function App() {
   const { Footer, Sider, Content } = Layout;
 
+  const dispatch = useDispatch();
   const [leftSideBarCollapsed, setLeftSideBarCollapsed] = useState(false);
   const onLeftSideBarCollapse = () => {
     const isCollapsed = leftSideBarCollapsed;
@@ -68,9 +71,19 @@ function App() {
         <div className="title-area">
           <text>Crafting List</text>
         </div>
-        <Menu theme="dark" inlineIndent={50} mode="inline">
-          <CraftingList collapsed={rightSideBarCollapsed} />
-        </Menu>
+        <div className="crafting-list-area">
+          <Menu theme="dark" inlineIndent={50} mode="inline">
+            <CraftingList
+              collapsed={rightSideBarCollapsed}
+              onEAChange={(index, value) =>
+                dispatch(garlandsActions.setCraftingEA(index, value))
+              }
+              onDeleteButton={(index) =>
+                dispatch(garlandsActions.deleteCraftingList(index))
+              }
+            />
+          </Menu>
+        </div>
       </Sider>
     </Layout>
   );
