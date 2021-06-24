@@ -23,11 +23,17 @@ function CraftingList(props) {
                 src={row.icon}
               />
               <Button
-                type="secondary"
                 shape="circle"
-                icon={<MinusOutlined />}
+                icon={
+                  <MinusOutlined style={{ color: '#ffffff', lineHeight: 1 }} />
+                }
                 size="middle"
-                style={{ marginBottom: 60 }}
+                style={{
+                  margin: 5,
+                  marginLeft: 20,
+                  backgroundColor: '#e6342e',
+                  position: 'absolute',
+                }}
                 onClick={(e) => {
                   e.stopPropagation();
                   onDeleteButton(index);
@@ -71,11 +77,10 @@ function CraftingList(props) {
                   style={{ marginRight: 10 }}
                 />
                 <Button
-                  type="secondary"
                   shape="circle"
-                  icon={<MinusOutlined />}
+                  icon={<MinusOutlined style={{ color: '#ffffff' }} />}
                   size="middle"
-                  style={{ margin: 5 }}
+                  style={{ margin: 5, backgroundColor: '#e6342e' }}
                   onClick={(e) => {
                     e.stopPropagation();
                     onDeleteButton(index);

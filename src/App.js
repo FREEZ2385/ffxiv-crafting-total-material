@@ -72,7 +72,12 @@ function App() {
           <text>Crafting List</text>
         </div>
         <div className="crafting-list-area">
-          <Menu theme="dark" inlineIndent={50} mode="inline">
+          <Menu
+            theme="dark"
+            inlineIndent={50}
+            mode="inline"
+            style={{ overflowY: 'auto' }}
+          >
             <CraftingList
               collapsed={rightSideBarCollapsed}
               onEAChange={(index, value) =>
