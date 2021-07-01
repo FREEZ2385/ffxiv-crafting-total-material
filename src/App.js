@@ -5,13 +5,16 @@ import './App.scss';
 
 import CrafterRecipes from './components/pages/CrafterRecipes';
 import CraftingList from './components/molecules/CraftingList';
+import MaterialList from './components/organisms/MaterialList';
 import { useDispatch, useSelector } from 'react-redux';
 import garlandsActions from './state/ducks/garlands/actions';
 
 function App() {
   const { Footer, Sider, Content } = Layout;
 
-  const { craftingList } = useSelector((state) => state.garlandsReducer);
+  const { craftingList, resultList } = useSelector(
+    (state) => state.garlandsReducer
+  );
 
   const dispatch = useDispatch();
   const [leftSideBarCollapsed, setLeftSideBarCollapsed] = useState(false);
@@ -28,8 +31,15 @@ function App() {
 
   const [pageKey, setPageKey] = useState('Crafter Recipes');
 
+  const [materialListOpen, setMaterialListOpen] = useState(false);
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
+      <MaterialList
+        onOpen={materialListOpen}
+        setOnOpen={setMaterialListOpen}
+        materialListData={resultList}
+      />
       <Sider
         collapsible
         collapsed={leftSideBarCollapsed}
@@ -94,6 +104,7 @@ function App() {
             <Button
               onClick={() => {
                 dispatch(garlandsActions.calculateCraftingList(craftingList));
+                setMaterialListOpen(true);
               }}
             >
               test

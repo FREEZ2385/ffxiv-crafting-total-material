@@ -10,7 +10,13 @@ const initialData = {
   levelingData: [],
   craftRecipeList: [],
   craftingList: [],
-  resultList: [],
+  resultList: {
+    level1: {},
+    level2: {},
+    level3: {},
+    level4: {},
+    crystal: {},
+  },
 };
 
 const pushCrafingList = (list, value) => {

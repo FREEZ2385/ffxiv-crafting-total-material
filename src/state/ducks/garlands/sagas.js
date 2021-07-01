@@ -2,7 +2,10 @@ import { getLevelingItemInfo, testApi, getRecipeInfo } from './apis';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { default as actions } from './actions';
 import recipeTableList from '../../../common/craftRecipeList';
-import { calculateCraftingListInRecipe } from '../../../common/functions';
+import {
+  calculateCraftingListInRecipe,
+  moveDuplicatingRecipeInRecipe,
+} from '../../../common/functions';
 
 function* doGetLevelingAction() {
   try {
@@ -81,6 +84,20 @@ function* doCalculateCraftingList({ payload }) {
       recipeLists,
       levelThreeData.crystal
     );
+
+    moveDuplicatingRecipeInRecipe(
+      levelOneData.materialData,
+      levelTwoData.materialData
+    );
+    moveDuplicatingRecipeInRecipe(
+      levelTwoData.materialData,
+      levelThreeData.materialData
+    );
+    moveDuplicatingRecipeInRecipe(
+      levelThreeData.materialData,
+      levelFourData.materialData
+    );
+
     yield put(
       actions.calculateCraftingListSuccess({
         level1: levelOneData.materialData,

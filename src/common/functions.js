@@ -47,3 +47,12 @@ export const calculateCraftingListInRecipe = (recipeData, crystalData) => {
 
   return resultData;
 };
+
+export function moveDuplicatingRecipeInRecipe(levelLowData, levelHighData) {
+  for (const itemname in levelLowData) {
+    if (levelHighData[itemname]) {
+      levelHighData[itemname].amount += levelLowData[itemname].amount;
+      delete levelLowData[itemname];
+    }
+  }
+}
