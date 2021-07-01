@@ -6,6 +6,7 @@ import {
   calculateCraftingListInRecipe,
   moveDuplicatingRecipeInRecipe,
 } from '../../../common/functions';
+import commonActions from '../common/actions';
 
 function* doGetLevelingAction() {
   try {
@@ -44,6 +45,7 @@ function* doGetCraftRecipeList({ payload }) {
 
 function* doCalculateCraftingList({ payload }) {
   try {
+    yield put(commonActions.openLoading());
     // level 1 calculate
     const recipeLists = [];
     for (const item of payload.craftingList) {
@@ -107,9 +109,11 @@ function* doCalculateCraftingList({ payload }) {
         crystal: levelFourData.crystal,
       })
     );
+    yield put(commonActions.closeLoading());
   } catch (e) {
     console.error('error of doGetCraftRecipeList');
     console.log(e);
+    yield put(commonActions.closeLoading());
   }
 }
 

@@ -15,6 +15,7 @@ export const calculateCraftingListInRecipe = (recipeData, crystalData) => {
               recipe[`amount_result`]
           ),
           info: recipe[`item_ingredient${num}`],
+          checked: false,
         };
         if (recipe[`item_ingredient_recipe${num}`][0]['id'])
           resultData.anotherRecipeData.push({
@@ -25,6 +26,7 @@ export const calculateCraftingListInRecipe = (recipeData, crystalData) => {
           const crystalData = {
             amount: recipe[`amount_ingredient${num}`] * recipe.ea,
             info: recipe[`item_ingredient${num}`],
+            checked: false,
           };
           if (resultData.crystal[crystalData.info.name]) {
             resultData.crystal[crystalData.info.name].amount +=

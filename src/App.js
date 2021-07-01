@@ -1,4 +1,4 @@
-import { Layout, Menu, Button } from 'antd';
+import { Layout, Menu } from 'antd';
 import { ProfileOutlined, AppstoreAddOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import './App.scss';
@@ -15,6 +15,7 @@ function App() {
   const { craftingList, resultList } = useSelector(
     (state) => state.garlandsReducer
   );
+  const { isLoading } = useSelector((state) => state.commonReducer);
 
   const dispatch = useDispatch();
   const [leftSideBarCollapsed, setLeftSideBarCollapsed] = useState(false);
@@ -39,6 +40,7 @@ function App() {
         onOpen={materialListOpen}
         setOnOpen={setMaterialListOpen}
         materialListData={resultList}
+        isLoading={isLoading}
       />
       <Sider
         collapsible
@@ -101,14 +103,20 @@ function App() {
                 dispatch(garlandsActions.deleteCraftingList(index))
               }
             />
-            <Button
+            <Menu.Item
               onClick={() => {
                 dispatch(garlandsActions.calculateCraftingList(craftingList));
                 setMaterialListOpen(true);
               }}
+              style={{
+                backgroundColor: '#1890ff',
+                position: 'absolute',
+                bottom: 44,
+              }}
             >
-              test
-            </Button>
+              {!rightSideBarCollapsed && 'Calculate the Material'}
+              {rightSideBarCollapsed && 'Calculate'}
+            </Menu.Item>
           </Menu>
         </div>
       </Sider>
