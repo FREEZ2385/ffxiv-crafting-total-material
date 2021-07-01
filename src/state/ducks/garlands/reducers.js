@@ -10,6 +10,7 @@ const initialData = {
   levelingData: [],
   craftRecipeList: [],
   craftingList: [],
+  resultList: [],
 };
 
 const pushCrafingList = (list, value) => {
@@ -65,6 +66,10 @@ const reducer = handleActions(
         state.craftingList,
         action.payload.index
       ),
+    }),
+    [garlandActions.calculateCraftingListSuccess]: (state, action) => ({
+      ...state,
+      resultList: action.payload.data,
     }),
   },
   initialData

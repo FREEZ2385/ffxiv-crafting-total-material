@@ -1,15 +1,17 @@
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Button } from 'antd';
 import { ProfileOutlined, AppstoreAddOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import './App.scss';
 
 import CrafterRecipes from './components/pages/CrafterRecipes';
 import CraftingList from './components/molecules/CraftingList';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import garlandsActions from './state/ducks/garlands/actions';
 
 function App() {
   const { Footer, Sider, Content } = Layout;
+
+  const { craftingList } = useSelector((state) => state.garlandsReducer);
 
   const dispatch = useDispatch();
   const [leftSideBarCollapsed, setLeftSideBarCollapsed] = useState(false);
@@ -67,6 +69,7 @@ function App() {
         reverseArrow
         collapsed={rightSideBarCollapsed}
         onCollapse={onRightSideBarCollapse}
+        style={{ transition: 'all 0.1s' }}
       >
         <div className="title-area">
           <text>Crafting List</text>
@@ -88,6 +91,13 @@ function App() {
                 dispatch(garlandsActions.deleteCraftingList(index))
               }
             />
+            <Button
+              onClick={() => {
+                dispatch(garlandsActions.calculateCraftingList(craftingList));
+              }}
+            >
+              test
+            </Button>
           </Menu>
         </div>
       </Sider>

@@ -18,6 +18,10 @@ const garlandsActions = createActions({
   addCraftingList: (itemData) => ({ itemData }),
   setCraftingEA: (index, value) => ({ index, value }),
   deleteCraftingList: (index) => ({ index }),
+
+  // Actions of Calculating Crafing List
+  calculateCraftingList: (craftingList) => ({ craftingList }),
+  calculateCraftingListSuccess: (data) => ({ data }),
 });
 
 export default garlandsActions;
