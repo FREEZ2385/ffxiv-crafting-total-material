@@ -1,5 +1,5 @@
 import { Layout, Menu } from 'antd';
-import { ProfileOutlined, AppstoreAddOutlined } from '@ant-design/icons';
+import { ProfileOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import './App.scss';
 
@@ -24,7 +24,7 @@ function App() {
     setLeftSideBarCollapsed(!isCollapsed);
   };
 
-  const [rightSideBarCollapsed, setRightSideBarCollapsed] = useState(true);
+  const [rightSideBarCollapsed, setRightSideBarCollapsed] = useState(false);
   const onRightSideBarCollapse = () => {
     const isCollapsed = rightSideBarCollapsed;
     setRightSideBarCollapsed(!isCollapsed);
@@ -61,9 +61,9 @@ function App() {
           <Menu.Item key="Crafter Recipes" icon={<ProfileOutlined />}>
             Crafter Recipes
           </Menu.Item>
-          <Menu.Item key="Leveling Jobs" icon={<AppstoreAddOutlined />}>
+          {/* <Menu.Item key="Leveling Jobs" icon={<AppstoreAddOutlined />}>
             Leveling Jobs
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu>
       </Sider>
       <Layout className="site-layout">
