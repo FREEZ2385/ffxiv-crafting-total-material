@@ -34,6 +34,14 @@ function App() {
 
   const [materialListOpen, setMaterialListOpen] = useState(false);
 
+  const calButtonStyle = {
+    backgroundColor: '#000000',
+    position: 'absolute',
+    height: 60,
+    lineHeight: '60px',
+    bottom: 44,
+  };
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <MaterialList
@@ -60,7 +68,11 @@ function App() {
           onClick={(item) => setPageKey(item.key)}
           className="sidebar-area"
         >
-          <Menu.Item key="Crafter Recipes" icon={<ProfileOutlined />}>
+          <Menu.Item
+            key="Crafter Recipes"
+            icon={<ProfileOutlined />}
+            className="sidebar-left-menu-area"
+          >
             {i18n.t('left-sidemenu-1')}
           </Menu.Item>
           {/* <Menu.Item key="Leveling Jobs" icon={<AppstoreAddOutlined />}>
@@ -111,11 +123,7 @@ function App() {
                 dispatch(garlandsActions.calculateCraftingList(craftingList));
                 setMaterialListOpen(true);
               }}
-              style={{
-                backgroundColor: '#1890ff',
-                position: 'absolute',
-                bottom: 44,
-              }}
+              style={calButtonStyle}
             >
               {!rightSideBarCollapsed && i18n.t('right-sidemenu-calbutton')}
               {rightSideBarCollapsed &&

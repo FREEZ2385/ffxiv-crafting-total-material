@@ -10,15 +10,19 @@ function CraftingList(props) {
   const { collapsed, onEAChange, onDeleteButton } = props;
   const { craftingList } = useSelector((state) => state.garlandsReducer);
 
+  const menuStyle = {
+    backgroundColor: '#658B6f',
+    margin: 0,
+    height: 60,
+    alignItems: 'center',
+    display: 'flex',
+    borderBottom: '1px solid #1f5e30',
+  };
+
   return (
     <>
       {craftingList.map((row, index) => (
-        <Menu.Item
-          key={row.name}
-          title={row.name}
-          style={{ backgroundColor: '#658B6f', margin: 0, height: 60 }}
-          disabled
-        >
+        <Menu.Item key={row.name} title={row.name} style={menuStyle} disabled>
           <div
             style={{
               display: 'flex',
