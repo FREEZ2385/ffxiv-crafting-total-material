@@ -9,6 +9,7 @@ import garlandsActions from '../../state/ducks/garlands/actions';
 import Pulldown from '../atoms/Pulldown';
 import RadioGroup from '../atoms/RadioGroups';
 import RecipeTable from '../molecules/RecipeTable';
+import i18n from '../../common/localize/i18n';
 
 import './scss/CrafterRecipes.scss';
 
@@ -24,11 +25,9 @@ function CrafterRecipes() {
         justify="center"
         style={{ height: 30, marginBottom: 30, marginTop: 50 }}
       >
-        <Col span={6}></Col>
-        <Col span={12} style={{ textAlign: 'center', fontSize: 32 }}>
-          <Typography>FFXIV Crafter Recipes</Typography>
+        <Col span={24} style={{ textAlign: 'center', fontSize: 28 }}>
+          <Typography>{i18n.t('crafter-recipes-title')}</Typography>
         </Col>
-        <Col span={6}></Col>
       </Row>
       <Row justify="center" style={{ height: 50 }}>
         <Col span={24} style={{ textAlign: 'center', fontSize: 40 }}>

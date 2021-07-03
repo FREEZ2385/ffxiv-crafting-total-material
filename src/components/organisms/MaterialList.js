@@ -3,13 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Drawer, Row, Col, Divider, Typography, Spin } from 'antd';
 import MaterialListCheck from '../molecules/MaterialListCheck';
+import i18n from '../../common/localize/i18n';
 
 function MaterialList(props) {
   // eslint-disable-next-line react/prop-types
   const { onOpen, setOnOpen, materialListData, isLoading } = props;
   return (
     <Drawer
-      title="Material Lists of calculation of Crafing List"
+      title={i18n.t('material-list-title')}
       placement="bottom"
       onClose={() => setOnOpen(false)}
       visible={onOpen}
@@ -19,10 +20,7 @@ function MaterialList(props) {
         <>
           <Row justify="center" style={{ height: '100%' }} align="middle">
             <Col span={24} style={{ textAlign: 'center' }}>
-              <Spin
-                tip="Tataru is calculating material on your crafting list..."
-                size="large"
-              />
+              <Spin tip={i18n.t('material-list-loading')} size="large" />
             </Col>
           </Row>
         </>
@@ -31,7 +29,7 @@ function MaterialList(props) {
         <>
           <Row justify="center">
             <Col span={3}>
-              <Typography> Crystal Lists</Typography>
+              <Typography>{i18n.t('material-list-crystal')}</Typography>
             </Col>
             <Col span={21} style={{ textAlign: 'center' }}>
               <MaterialListCheck itemData={materialListData.crystal} />
@@ -40,7 +38,7 @@ function MaterialList(props) {
           <Divider />
           <Row justify="center" style={{ marginTop: 20 }}>
             <Col span={3}>
-              <Typography> Material Level 1</Typography>
+              <Typography>{i18n.t('material-list-level1')}</Typography>
             </Col>
             <Col span={21} style={{ textAlign: 'center' }}>
               <MaterialListCheck itemData={materialListData.level1} />
@@ -49,7 +47,7 @@ function MaterialList(props) {
           <Divider />
           <Row justify="center" style={{ marginTop: 20 }}>
             <Col span={3}>
-              <Typography> Material Level 2</Typography>
+              <Typography>{i18n.t('material-list-level2')}</Typography>
             </Col>
             <Col span={21} style={{ textAlign: 'center' }}>
               <MaterialListCheck itemData={materialListData.level2} />
@@ -58,7 +56,7 @@ function MaterialList(props) {
           <Divider />
           <Row justify="center" style={{ marginTop: 20 }}>
             <Col span={3}>
-              <Typography> Material Level 3</Typography>
+              <Typography>{i18n.t('material-list-level3')}</Typography>
             </Col>
             <Col span={21} style={{ textAlign: 'center' }}>
               <MaterialListCheck itemData={materialListData.level3} />
@@ -67,7 +65,7 @@ function MaterialList(props) {
           <Divider />
           <Row justify="center" style={{ marginTop: 20 }}>
             <Col span={3}>
-              <Typography> Material Level 4</Typography>
+              <Typography>{i18n.t('material-list-level4')}</Typography>
             </Col>
             <Col span={21} style={{ textAlign: 'center' }}>
               <MaterialListCheck itemData={materialListData.level4} />

@@ -2,12 +2,12 @@ import { Layout, Menu } from 'antd';
 import { ProfileOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import './App.scss';
-
 import CrafterRecipes from './components/pages/CrafterRecipes';
 import CraftingList from './components/molecules/CraftingList';
 import MaterialList from './components/organisms/MaterialList';
 import { useDispatch, useSelector } from 'react-redux';
 import garlandsActions from './state/ducks/garlands/actions';
+import i18n from './common/localize/i18n';
 
 function App() {
   const { Footer, Sider, Content } = Layout;
@@ -59,7 +59,7 @@ function App() {
           onClick={(item) => setPageKey(item.key)}
         >
           <Menu.Item key="Crafter Recipes" icon={<ProfileOutlined />}>
-            Crafter Recipes
+            {i18n.t('left-sidemenu-1')}
           </Menu.Item>
           {/* <Menu.Item key="Leveling Jobs" icon={<AppstoreAddOutlined />}>
             Leveling Jobs
@@ -84,12 +84,12 @@ function App() {
         style={{ transition: 'all 0.1s' }}
       >
         <div className="title-area">
-          <text>Crafting List</text>
+          <text>{i18n.t('right-sidemenu-title')}</text>
         </div>
         <div className="crafting-list-area">
           <Menu
             theme="dark"
-            inlineIndent={50}
+            inlineIndent={90}
             selectable={false}
             mode="inline"
             style={{ overflowY: 'auto' }}
@@ -114,8 +114,9 @@ function App() {
                 bottom: 44,
               }}
             >
-              {!rightSideBarCollapsed && 'Calculate the Material'}
-              {rightSideBarCollapsed && 'Calculate'}
+              {!rightSideBarCollapsed && i18n.t('right-sidemenu-calbutton')}
+              {rightSideBarCollapsed &&
+                i18n.t('right-sidemenu-calbutton-collasped')}
             </Menu.Item>
           </Menu>
         </div>

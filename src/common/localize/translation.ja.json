@@ -1,0 +1,30 @@
+{
+    "carpenter": "木工師",
+    "blacksmith": "鍛冶師",
+    "armorer": "甲冑師",
+    "goldsmith": "彫金師",
+    "leatherworker": "革細工師",
+    "weaver": "裁縫師",
+    "alchemist": "錬金術師",
+    "culinarian": "調理師",
+
+
+    "left-sidemenu-1": "クラフター製作手帳",
+
+    "right-sidemenu-title": "製作一蘭",
+    "right-sidemenu-calbutton": "製作一蘭からのレシピ材料を集計",
+    "right-sidemenu-calbutton-collasped": "集計",
+
+    "crafter-recipes-title": "クラフター製作手帳から検索",
+    "crafter-recipes-pulldown-leveling": "レベル別",
+
+    "material-list-title": "製作一蘭の材料一蘭",
+    "material-list-loading": "タタルさんが材料の集計をしています。しばらくお待ちください。",
+    "material-list-crystal": "クリスタル",
+    "material-list-level1": "材料１段",
+    "material-list-level2": "材料２段",
+    "material-list-level3": "材料３段",
+    "material-list-level4": "材料４段",
+
+    "recipe-table-column-item": "名"
+}
