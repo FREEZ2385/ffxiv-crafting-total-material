@@ -13,7 +13,12 @@ function CraftingList(props) {
   return (
     <>
       {craftingList.map((row, index) => (
-        <Menu.Item key={row.name} title={row.name} disabled>
+        <Menu.Item
+          key={row.name}
+          title={row.name}
+          style={{ backgroundColor: '#658B6f', margin: 0, height: 60 }}
+          disabled
+        >
           <div
             style={{
               display: 'flex',

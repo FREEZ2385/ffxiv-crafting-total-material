@@ -46,6 +46,7 @@ function App() {
         collapsible
         collapsed={leftSideBarCollapsed}
         onCollapse={onLeftSideBarCollapse}
+        className="sidebar-area"
       >
         <div className="title-area">
           {!leftSideBarCollapsed && <text>FFXIV Craft Total Material</text>}
@@ -57,6 +58,7 @@ function App() {
           defaultSelectedKeys={[pageKey]}
           mode="inline"
           onClick={(item) => setPageKey(item.key)}
+          className="sidebar-area"
         >
           <Menu.Item key="Crafter Recipes" icon={<ProfileOutlined />}>
             {i18n.t('left-sidemenu-1')}
@@ -82,6 +84,7 @@ function App() {
         collapsed={rightSideBarCollapsed}
         onCollapse={onRightSideBarCollapse}
         style={{ transition: 'all 0.1s' }}
+        className="sidebar-area"
       >
         <div className="title-area">
           <text>{i18n.t('right-sidemenu-title')}</text>
@@ -89,10 +92,10 @@ function App() {
         <div className="crafting-list-area">
           <Menu
             theme="dark"
-            inlineIndent={90}
             selectable={false}
             mode="inline"
             style={{ overflowY: 'auto' }}
+            className="sidebar-area"
           >
             <CraftingList
               collapsed={rightSideBarCollapsed}
