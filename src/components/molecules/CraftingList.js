@@ -32,7 +32,7 @@ function CraftingList(props) {
             <div
               style={{
                 display: 'flex',
-                paddingLeft: 15,
+                paddingLeft: collapsed ? 0 : 15,
               }}
             >
               <Image
@@ -52,20 +52,19 @@ function CraftingList(props) {
                 display: 'flex',
               }}
             >
-              {!collapsed && (
-                <InputNumber
-                  min={1}
-                  max={99}
-                  value={row.ea}
-                  onChange={(value) => onEAChange(index, value)}
-                  style={{
-                    width: 70,
-                    height: 32,
-                    position: 'relative',
-                    margin: 5,
-                  }}
-                />
-              )}
+              <InputNumber
+                min={1}
+                max={99}
+                value={row.ea}
+                onChange={(value) => onEAChange(index, value)}
+                style={{
+                  width: 60,
+                  height: 32,
+                  position: 'relative',
+                  margin: 5,
+                }}
+              />
+
               <Button
                 shape="circle"
                 icon={
@@ -74,7 +73,7 @@ function CraftingList(props) {
                 size="middle"
                 style={{
                   margin: 5,
-                  marginLeft: 20,
+                  marginLeft: 2,
                   backgroundColor: '#e6342e',
                 }}
                 onClick={(e) => {

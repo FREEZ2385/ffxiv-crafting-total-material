@@ -1,5 +1,5 @@
 import { Layout, Menu } from 'antd';
-import { ProfileOutlined } from '@ant-design/icons';
+import { GithubOutlined, ProfileOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import './App.scss';
 import CrafterRecipes from './components/pages/CrafterRecipes';
@@ -78,6 +78,11 @@ function App() {
           {/* <Menu.Item key="Leveling Jobs" icon={<AppstoreAddOutlined />}>
             Leveling Jobs
           </Menu.Item> */}
+          <Menu.Item
+            key="Crafter Recipes"
+            className="sidebar-left-menu-area"
+            icon={<GithubOutlined />}
+          ></Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">
@@ -91,11 +96,11 @@ function App() {
       <Sider
         width={500}
         collapsible
-        collapsedWidth={150}
+        collapsedWidth={200}
         reverseArrow
         collapsed={rightSideBarCollapsed}
         onCollapse={onRightSideBarCollapse}
-        style={{ transition: 'all 0.1s' }}
+        style={{ transition: 'all 0.2s' }}
         className="sidebar-area"
       >
         <div className="title-area">
