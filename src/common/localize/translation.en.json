@@ -21,11 +21,16 @@
 
     "material-list-title": "Material Lists of calculation of Crafing List",
     "material-list-loading": "Tataru is calculating material on your crafting list...",
+    "material-list-craftinglist": "Crafting List",
     "material-list-crystal": "Crystal Lists",
     "material-list-level1": "Material Level 1",
     "material-list-level2": "Material Level 2",
     "material-list-level3": "Material Level 3",
     "material-list-level4": "Material Level 4",
+
+    "material-list-popover-nomaterial": "There is no Material",
+    "material-list-popover-title": "`s Material List",
+
 
     "recipe-table-column-item": "Item"
   }

@@ -89,6 +89,7 @@ export const getRecipeInfo = async (lang, recipeNo) => {
     const response = axios.get(`https://xivapi.com/recipe/${recipeNo}`, {
       params: {
         columns:
+          'Name,' +
           'AmountResult,' +
           'AmountIngredient0,' +
           'AmountIngredient1,' +

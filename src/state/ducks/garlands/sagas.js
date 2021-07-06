@@ -4,7 +4,9 @@ import { default as actions } from './actions';
 import recipeTableList from '../../../common/craftRecipeList';
 import {
   calculateCraftingListInRecipe,
-  moveDuplicatingRecipeInRecipe,
+  calculatingMaterialLevel,
+  calculatingMaterialLevel2,
+  getMaterialData,
 } from '../../../common/functions';
 import commonActions from '../common/actions';
 
@@ -46,9 +48,16 @@ function* doGetCraftRecipeList({ payload }) {
 function* doCalculateCraftingList({ payload }) {
   try {
     yield put(commonActions.openLoading());
+    const craftingList = {};
     // level 1 calculate
     const recipeLists = [];
     for (const item of payload.craftingList) {
+      craftingList[item.name] = {
+        amount: item.ea,
+        info: item,
+        checked: false,
+        lowLevelMaterial: [],
+      };
       const recipeList = yield call(getRecipeInfo, 'ja', item.recipe);
       recipeLists.push({ ...recipeList.data, ea: item.ea });
     }
@@ -87,21 +96,18 @@ function* doCalculateCraftingList({ payload }) {
       levelThreeData.crystal
     );
 
-    moveDuplicatingRecipeInRecipe(
-      levelOneData.materialData,
-      levelTwoData.materialData
-    );
-    moveDuplicatingRecipeInRecipe(
-      levelTwoData.materialData,
-      levelThreeData.materialData
-    );
-    moveDuplicatingRecipeInRecipe(
-      levelThreeData.materialData,
-      levelFourData.materialData
-    );
+    getMaterialData(craftingList, levelOneData);
+    calculatingMaterialLevel(levelOneData, levelTwoData);
+    calculatingMaterialLevel(levelTwoData, levelThreeData);
+    calculatingMaterialLevel(levelThreeData, levelFourData);
+
+    calculatingMaterialLevel2(levelOneData, levelTwoData);
+    calculatingMaterialLevel2(levelTwoData, levelThreeData);
+    calculatingMaterialLevel2(levelThreeData, levelFourData);
 
     yield put(
       actions.calculateCraftingListSuccess({
+        craftingList: craftingList,
         level1: levelOneData.materialData,
         level2: levelTwoData.materialData,
         level3: levelThreeData.materialData,

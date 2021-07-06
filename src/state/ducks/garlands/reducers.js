@@ -11,6 +11,7 @@ const initialData = {
   craftRecipeList: [],
   craftingList: [],
   resultList: {
+    craftingList: {},
     level1: {},
     level2: {},
     level3: {},

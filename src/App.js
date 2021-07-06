@@ -1,5 +1,5 @@
 import { Layout, Menu } from 'antd';
-import { GithubOutlined, ProfileOutlined } from '@ant-design/icons';
+import { ProfileOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import './App.scss';
 import CrafterRecipes from './components/pages/CrafterRecipes';
@@ -78,11 +78,6 @@ function App() {
           {/* <Menu.Item key="Leveling Jobs" icon={<AppstoreAddOutlined />}>
             Leveling Jobs
           </Menu.Item> */}
-          <Menu.Item
-            key="Crafter Recipes"
-            className="sidebar-left-menu-area"
-            icon={<GithubOutlined />}
-          ></Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">

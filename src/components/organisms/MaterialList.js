@@ -36,6 +36,15 @@ function MaterialList(props) {
             </Col>
           </Row>
           <Divider />
+          <Row justify="center">
+            <Col span={3}>
+              <Typography>{i18n.t('material-list-craftinglist')}</Typography>
+            </Col>
+            <Col span={21} style={{ textAlign: 'center' }}>
+              <MaterialListCheck itemData={materialListData.craftingList} />
+            </Col>
+          </Row>
+          <Divider />
           <Row justify="center" style={{ marginTop: 20 }}>
             <Col span={3}>
               <Typography>{i18n.t('material-list-level1')}</Typography>
