@@ -11,6 +11,7 @@
 
 
     "left-sidemenu-1": "Crafter Recipes",
+    "left-sidemenu-setting": "Setting",
 
     "right-sidemenu-title": "Crafting List",
     "right-sidemenu-calbutton": "Calculate the Material",
@@ -18,6 +19,8 @@
 
     "crafter-recipes-title": "FFXIV Crafter Recipes",
     "crafter-recipes-pulldown-leveling": "Leveling",
+
+    "setting-language": "Language",
 
     "material-list-title": "Material Lists of calculation of Crafing List",
     "material-list-loading": "Tataru is calculating material on your crafting list...",

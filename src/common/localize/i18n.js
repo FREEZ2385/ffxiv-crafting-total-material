@@ -4,19 +4,18 @@ import { initReactI18next } from 'react-i18next';
 import translationEn from './translation.en';
 import translationJa from './translation.ja';
 
-const resource = {
+const resources = {
   en: {
     translation: translationEn,
   },
-  ko: {
+  ja: {
     translation: translationJa,
   },
 };
 
 i18n.use(initReactI18next).init({
-  resources: resource,
-  lng: 'ko',
-  fallbackLng: 'ko',
+  resources: resources,
+  fallbackLng: 'ja',
   debug: true,
   keySeparator: false,
   interpolation: {

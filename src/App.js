@@ -8,6 +8,7 @@ import MaterialList from './components/organisms/MaterialList';
 import { useDispatch, useSelector } from 'react-redux';
 import garlandsActions from './state/ducks/garlands/actions';
 import i18n from './common/localize/i18n';
+import Setting from './components/pages/Setting';
 
 function App() {
   const { Footer, Sider, Content } = Layout;
@@ -57,13 +58,16 @@ function App() {
         className="sidebar-area"
       >
         <div className="title-area">
-          {!leftSideBarCollapsed && <text>FFXIV Craft Total Material</text>}
-          {leftSideBarCollapsed && <text>CTM</text>}
+          {!leftSideBarCollapsed ? (
+            <text>FFXIV Craft Total Material</text>
+          ) : (
+            <text>CTM</text>
+          )}
         </div>
 
         <Menu
           theme="dark"
-          defaultSelectedKeys={[pageKey]}
+          defaultSelectedKeys={pageKey}
           mode="inline"
           onClick={(item) => setPageKey(item.key)}
           className="sidebar-area"
@@ -78,11 +82,19 @@ function App() {
           {/* <Menu.Item key="Leveling Jobs" icon={<AppstoreAddOutlined />}>
             Leveling Jobs
           </Menu.Item> */}
+          <Menu.Item
+            key="Setting"
+            icon={<ProfileOutlined />}
+            className="sidebar-left-menu-area"
+          >
+            {i18n.t('left-sidemenu-setting')}
+          </Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">
         <Content style={{ margin: '0 16px' }}>
           {pageKey === 'Crafter Recipes' && <CrafterRecipes />}
+          {pageKey === 'Setting' && <Setting />}
         </Content>
         <Footer style={{ textAlign: 'center' }}>
           Lee Freez ©2021 Created by Lee Freez

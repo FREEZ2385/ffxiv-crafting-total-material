@@ -8,6 +8,9 @@ import { createActions } from 'redux-actions';
 const commonActions = createActions({
   openLoading: () => ({}),
   closeLoading: () => ({}),
+
+  changeLanguage: (lng) => ({ lng }),
+  changeLanguageSuccess: (lng) => ({ lng }),
 });
 
 export default commonActions;

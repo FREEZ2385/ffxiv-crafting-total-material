@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'antd';
 import Icon from '@ant-design/icons';
+import i18n from '../../common/localize/i18n';
 
 function JobButton(props) {
   // eslint-disable-next-line react/prop-types
@@ -14,7 +15,7 @@ function JobButton(props) {
       size="middle"
       style={{ margin: 5 }}
     >
-      {text}
+      {i18n.t(text)}
     </Button>
   );
 }

@@ -1,52 +1,51 @@
 import { craftJobIcons } from './jobIcons';
-import i18n from './localize/i18n';
 
 export const crafterRecipesRadioOptions = [
   {
     value: 'Carpenter',
-    text: i18n.t('carpenter'),
+    text: 'carpenter',
     icon: craftJobIcons.Carpenter,
   },
   {
     value: 'Blacksmith',
-    text: i18n.t('blacksmith'),
+    text: 'blacksmith',
     icon: craftJobIcons.Blacksmith,
   },
   {
     value: 'Armorer',
-    text: i18n.t('armorer'),
+    text: 'armorer',
     icon: craftJobIcons.Armorer,
   },
   {
     value: 'Goldsmith',
-    text: i18n.t('goldsmith'),
+    text: 'goldsmith',
     icon: craftJobIcons.Goldsmith,
   },
   {
     value: 'Leatherworker',
-    text: i18n.t('leatherworker'),
+    text: 'leatherworker',
     icon: craftJobIcons.Leatherworker,
   },
   {
     value: 'Weaver',
-    text: i18n.t('weaver'),
+    text: 'weaver',
     icon: craftJobIcons.Weaver,
   },
   {
     value: 'Alchemist',
-    text: i18n.t('alchemist'),
+    text: 'alchemist',
     icon: craftJobIcons.Alchemist,
   },
   {
     value: 'Culinarian',
-    text: i18n.t('culinarian'),
+    text: 'culinarian',
     icon: craftJobIcons.Culinarian,
   },
 ];
 
 export const crafterRecipesPullDownOptions = [
   {
-    text: `-------${i18n.t('crafter-recipes-pulldown-leveling')}-------`,
+    text: `-------Level-------`,
     value: '',
   },
   { text: '1 ~ 5', value: 'lev-1' },

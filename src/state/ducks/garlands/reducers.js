@@ -48,7 +48,25 @@ const reducer = handleActions(
       ...state,
       levelingData: action.payload.data,
     }),
-
+    [garlandActions.clearCraftingList]: (state) => ({
+      ...state,
+      craftingList: [],
+    }),
+    [garlandActions.clearCraftRecipeList]: (state) => ({
+      ...state,
+      craftRecipeList: [],
+    }),
+    [garlandActions.clearResultList]: (state) => ({
+      ...state,
+      resultList: {
+        craftingList: {},
+        level1: {},
+        level2: {},
+        level3: {},
+        level4: {},
+        crystal: {},
+      },
+    }),
     [garlandActions.getCraftRecipeListSuccess]: (state, action) => ({
       ...state,
       craftRecipeList: action.payload.data,

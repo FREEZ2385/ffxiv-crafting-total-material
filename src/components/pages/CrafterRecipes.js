@@ -57,6 +57,7 @@ function CrafterRecipes() {
                 );
                 setPulldownSelect(value);
               }}
+              value={pulldownSelect}
             />
           )}
         </Col>

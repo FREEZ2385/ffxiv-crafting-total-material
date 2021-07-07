@@ -11,18 +11,19 @@ export const calculateCraftingListInRecipe = (recipeData, crystalData) => {
     resultData.craftData[recipe.name] = {};
     for (let num = 0; num < 9; num++) {
       if (recipe[`amount_ingredient${num}`] !== 0) {
+        const amount = recipe[`amount_ingredient${num}`] * recipe.ea;
         const itemdata = {
-          amount: Math.ceil(
-            (recipe[`amount_ingredient${num}`] * recipe.ea) /
-              recipe[`amount_result`]
-          ),
+          amount: Math.ceil(amount / recipe[`amount_result`]),
           info: recipe[`item_ingredient${num}`],
           checked: false,
           lowLevelMaterial: [],
         };
         if (num >= 8) {
           const crystalData = {
-            amount: recipe[`amount_ingredient${num}`] * recipe.ea,
+            amount: Math.ceil(
+              (recipe[`amount_ingredient${num}`] * recipe.ea) /
+                recipe[`amount_result`]
+            ),
             info: recipe[`item_ingredient${num}`],
             checked: false,
             lowLevelMaterial: [],

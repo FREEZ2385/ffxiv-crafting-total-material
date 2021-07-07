@@ -10,6 +10,11 @@ const garlandsActions = createActions({
   getLevelingAction: () => ({}),
   getLevelingActionSuccess: (data) => ({ data }),
 
+  // clear Actions
+  clearCraftingList: () => ({}),
+  clearCraftRecipeList: () => ({}),
+  clearResultList: () => ({}),
+
   // Actions of Recipe List
   getCraftRecipeList: (jobName, recipeCode) => ({ jobName, recipeCode }),
   getCraftRecipeListSuccess: (data) => ({ data }),

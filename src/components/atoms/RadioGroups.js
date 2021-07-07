@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Radio } from 'antd';
 import Icon from '@ant-design/icons';
 import './scss/RadioGroup.scss';
+import i18n from '../../common/localize/i18n';
 
 function RadioGroup(props) {
   // eslint-disable-next-line react/prop-types
@@ -15,7 +16,7 @@ function RadioGroup(props) {
         {options.map((row) => (
           <Radio.Button value={row.value}>
             <Icon component={row.icon} style={{ marginRight: 5 }} />
-            {row.text}
+            {i18n.t(row.text)}
           </Radio.Button>
         ))}
       </Radio.Group>

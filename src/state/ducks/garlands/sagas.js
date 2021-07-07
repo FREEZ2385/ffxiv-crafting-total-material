@@ -1,5 +1,5 @@
 import { getLevelingItemInfo, testApi, getRecipeInfo } from './apis';
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { default as actions } from './actions';
 import recipeTableList from '../../../common/craftRecipeList';
 import {
@@ -21,10 +21,11 @@ function* doGetLevelingAction() {
 
 function* doGetCraftRecipeList({ payload }) {
   try {
+    const { language } = yield select((state) => state.commonReducer);
     const filteredOption = recipeTableList[payload.jobName][payload.recipeCode];
     const response = yield call(
       getLevelingItemInfo,
-      'ja',
+      language,
       filteredOption.id,
       filteredOption.minLevel,
       filteredOption.maxLevel
@@ -47,6 +48,7 @@ function* doGetCraftRecipeList({ payload }) {
 
 function* doCalculateCraftingList({ payload }) {
   try {
+    const { language } = yield select((state) => state.commonReducer);
     yield put(commonActions.openLoading());
     const craftingList = {};
     // level 1 calculate
@@ -58,7 +60,7 @@ function* doCalculateCraftingList({ payload }) {
         checked: false,
         lowLevelMaterial: [],
       };
-      const recipeList = yield call(getRecipeInfo, 'ja', item.recipe);
+      const recipeList = yield call(getRecipeInfo, language, item.recipe);
       recipeLists.push({ ...recipeList.data, ea: item.ea });
     }
     const levelOneData = calculateCraftingListInRecipe(recipeLists, {});
@@ -66,7 +68,7 @@ function* doCalculateCraftingList({ payload }) {
     // level 2 calculate
     recipeLists.splice(0, recipeLists.length);
     for (const item of levelOneData.anotherRecipeData) {
-      const recipeList = yield call(getRecipeInfo, 'ja', item.recipe);
+      const recipeList = yield call(getRecipeInfo, language, item.recipe);
       recipeLists.push({ ...recipeList.data, ea: item.ea });
     }
     const levelTwoData = calculateCraftingListInRecipe(
@@ -77,7 +79,7 @@ function* doCalculateCraftingList({ payload }) {
     // level 3 calculate
     recipeLists.splice(0, recipeLists.length);
     for (const item of levelTwoData.anotherRecipeData) {
-      const recipeList = yield call(getRecipeInfo, 'ja', item.recipe);
+      const recipeList = yield call(getRecipeInfo, language, item.recipe);
       recipeLists.push({ ...recipeList.data, ea: item.ea });
     }
     const levelThreeData = calculateCraftingListInRecipe(
@@ -88,7 +90,7 @@ function* doCalculateCraftingList({ payload }) {
     // level 4 calculate
     recipeLists.splice(0, recipeLists.length);
     for (const item of levelThreeData.anotherRecipeData) {
-      const recipeList = yield call(getRecipeInfo, 'ja', item.recipe);
+      const recipeList = yield call(getRecipeInfo, language, item.recipe);
       recipeLists.push({ ...recipeList.data, ea: item.ea });
     }
     const levelFourData = calculateCraftingListInRecipe(
@@ -123,10 +125,10 @@ function* doCalculateCraftingList({ payload }) {
   }
 }
 
-function* rootSaga() {
+function* garlandsRootSaga() {
   yield takeEvery(actions.getLevelingAction, doGetLevelingAction);
   yield takeEvery(actions.getCraftRecipeList, doGetCraftRecipeList);
   yield takeEvery(actions.calculateCraftingList, doCalculateCraftingList);
 }
 
-export default rootSaga;
+export default garlandsRootSaga;
