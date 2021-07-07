@@ -1,4 +1,4 @@
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Typography } from 'antd';
 import { ProfileOutlined, SettingOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import './App.scss';
@@ -62,9 +62,14 @@ function App() {
       >
         <div className="title-area">
           {!leftSideBarCollapsed ? (
-            <text>FFXIV Craft Total Material</text>
+            <Typography style={{ color: 'white' }}>
+              FFXIV Craft Total Material
+            </Typography>
           ) : (
-            <text>CTM</text>
+            <Typography style={{ color: 'white' }}>CTM</Typography>
+          )}
+          {!leftSideBarCollapsed && (
+            <Typography style={{ color: 'white' }}>v0.1.0</Typography>
           )}
         </div>
 
@@ -99,8 +104,11 @@ function App() {
           {pageKey === 'Crafter Recipes' && <CrafterRecipes />}
           {pageKey === 'Setting' && <Setting />}
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          Lee Freez ©2021 Created by Lee Freez
+        <Footer style={{ textAlign: 'center', fontSize: 12 }}>
+          FINAL FANTASY is a registered trademark of Square Enix Holdings Co.
+          Ltd. <br />
+          FINAL FANTASY XIV © 2010 - 2021 SQUARE ENIX CO., LTD. All Rights
+          Reserved.
         </Footer>
       </Layout>
       <Sider

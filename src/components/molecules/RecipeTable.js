@@ -67,7 +67,7 @@ function RecipeTable(props) {
       dataSource={addfilteredDatas()}
       size="small"
       pagination={false}
-      scroll={{ y: 300 }}
+      scroll={{ y: 'calc(80vh - 300px)' }}
     />
   );
 }
