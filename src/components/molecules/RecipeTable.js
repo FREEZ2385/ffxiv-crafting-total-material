@@ -34,6 +34,7 @@ function RecipeTable(props) {
     newFilteredColumns.push({
       title: '',
       dataIndex: '',
+      width: 80,
       key: '',
       // eslint-disable-next-line react/display-name
       render: (data) => (
@@ -61,7 +62,13 @@ function RecipeTable(props) {
   };
 
   return (
-    <Table columns={addfilteredcolumns()} dataSource={addfilteredDatas()} />
+    <Table
+      columns={addfilteredcolumns()}
+      dataSource={addfilteredDatas()}
+      size="small"
+      pagination={false}
+      scroll={{ y: 300 }}
+    />
   );
 }
 

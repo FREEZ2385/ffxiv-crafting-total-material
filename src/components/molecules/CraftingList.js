@@ -11,12 +11,13 @@ function CraftingList(props) {
   const { craftingList } = useSelector((state) => state.garlandsReducer);
 
   const menuStyle = {
-    backgroundColor: '#658B6f',
+    backgroundColor: '#dee8ff',
+    color: '#111111',
     margin: 0,
     height: 60,
     alignItems: 'center',
     display: 'flex',
-    borderBottom: '1px solid #1f5e30',
+    borderBottom: '1px solid #a9b8d9',
   };
 
   return (
@@ -42,7 +43,7 @@ function CraftingList(props) {
                 src={row.icon}
               />
               {!collapsed && (
-                <Typography style={{ marginLeft: 15, color: '#ffffff' }}>
+                <Typography style={{ marginLeft: 15, color: '#111111' }}>
                   {row.name}
                 </Typography>
               )}

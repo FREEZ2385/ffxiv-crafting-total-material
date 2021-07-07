@@ -36,9 +36,11 @@ function App() {
   const [materialListOpen, setMaterialListOpen] = useState(false);
 
   const calButtonStyle = {
-    backgroundColor: '#000000',
+    backgroundColor: '#005580',
+    color: '#ffffff',
     position: 'absolute',
     height: 60,
+    fontSize: 20,
     lineHeight: '60px',
     bottom: 44,
   };
@@ -53,6 +55,7 @@ function App() {
       />
       <Sider
         collapsible
+        theme="light"
         collapsed={leftSideBarCollapsed}
         onCollapse={onLeftSideBarCollapse}
         className="sidebar-area"
@@ -66,7 +69,7 @@ function App() {
         </div>
 
         <Menu
-          theme="dark"
+          theme="light"
           defaultSelectedKeys={pageKey}
           mode="inline"
           onClick={(item) => setPageKey(item.key)}
@@ -103,6 +106,7 @@ function App() {
       <Sider
         width={500}
         collapsible
+        theme="light"
         collapsedWidth={200}
         reverseArrow
         collapsed={rightSideBarCollapsed}
@@ -111,11 +115,11 @@ function App() {
         className="sidebar-area"
       >
         <div className="title-area">
-          <text>{i18n.t('right-sidemenu-title')}</text>
+          <text style={{ fontSize: 18 }}>{i18n.t('right-sidemenu-title')}</text>
         </div>
         <div className="crafting-list-area">
           <Menu
-            theme="dark"
+            theme="light"
             selectable={false}
             mode="inline"
             style={{ overflowY: 'auto' }}
