@@ -1,5 +1,5 @@
 import { Layout, Menu } from 'antd';
-import { ProfileOutlined } from '@ant-design/icons';
+import { ProfileOutlined, SettingOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import './App.scss';
 import CrafterRecipes from './components/pages/CrafterRecipes';
@@ -84,7 +84,7 @@ function App() {
           </Menu.Item> */}
           <Menu.Item
             key="Setting"
-            icon={<ProfileOutlined />}
+            icon={<SettingOutlined />}
             className="sidebar-left-menu-area"
           >
             {i18n.t('left-sidemenu-setting')}
