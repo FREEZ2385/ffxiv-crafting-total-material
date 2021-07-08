@@ -23,7 +23,7 @@ function CraftingList(props) {
   return (
     <>
       {craftingList.map((row, index) => (
-        <Menu.Item key={row.name} title={row.name} style={menuStyle} disabled>
+        <Menu.Item key={row.id} title={row.name} style={menuStyle} disabled>
           <div
             style={{
               display: 'flex',

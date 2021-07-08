@@ -72,8 +72,8 @@ function RecipeTable(props) {
   );
 }
 
-RecipeTable.PropTypes = {
-  columns: PropTypes.arrayOf(PropTypes.string).isRequired,
+RecipeTable.propTypes = {
+  columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   data: PropTypes.array.isRequired,
   onAddButtonClick: PropTypes.func,
 };

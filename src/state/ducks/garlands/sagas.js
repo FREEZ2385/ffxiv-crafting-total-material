@@ -22,6 +22,7 @@ function* doGetLevelingAction() {
 function* doGetCraftRecipeList({ payload }) {
   try {
     const { language } = yield select((state) => state.commonReducer);
+    if (payload.recipeCode === '') return false;
     const filteredOption = recipeTableList[payload.jobName][payload.recipeCode];
     const response = yield call(
       getLevelingItemInfo,

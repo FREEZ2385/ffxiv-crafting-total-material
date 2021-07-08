@@ -17,17 +17,19 @@ function Pulldown(props) {
       value={value}
     >
       {options.map((row) => (
-        <Option value={row.value}>{row.text}</Option>
+        <Option key={row.value} value={row.value}>
+          {row.text}
+        </Option>
       ))}
     </Select>
   );
 }
 
-Pulldown.PropTypes = {
+Pulldown.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
-      text: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
     })
   ).isRequired,
   onChange: PropTypes.func,
