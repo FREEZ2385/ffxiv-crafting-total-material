@@ -119,7 +119,11 @@ function App() {
         reverseArrow
         collapsed={rightSideBarCollapsed}
         onCollapse={onRightSideBarCollapse}
-        style={{ transition: 'all 0.2s' }}
+        style={{
+          overflowX: 'hidden',
+          height: '100vh',
+          transition: 'all 0.2s',
+        }}
         className="sidebar-area"
       >
         <div className="title-area">
@@ -130,7 +134,7 @@ function App() {
             theme="light"
             selectable={false}
             mode="inline"
-            style={{ overflowY: 'auto' }}
+            style={{ overflow: 'hidden' }}
             className="sidebar-area"
           >
             <CraftingList

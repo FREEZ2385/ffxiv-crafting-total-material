@@ -31,10 +31,11 @@
 
 .crafting-list-area {
   overflow-y: auto;
+  height: calc(90vh - 100px);
   .ant-menu.ant-menu-inline-collapsed {
     .ant-menu-item {
       width: 100%;
-      padding: 0 calc(50% - 100px / 2);
+      padding: 0 calc(50% - 130px / 2);
       transition: all 0.2ms;
     }
   }
