@@ -90,7 +90,7 @@ function CraftingList(props) {
   );
 }
 
-CraftingList.PropTypes = {
+CraftingList.propTypes = {
   collapsed: PropTypes.bool,
   onEAChange: PropTypes.func,
   onDeleteButton: PropTypes.func,

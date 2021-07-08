@@ -98,8 +98,8 @@ function MaterialListCheck(props) {
     </Row>
   );
 }
-MaterialListCheck.PropTypes = {
-  itemData: PropTypes.obj,
+MaterialListCheck.propTypes = {
+  itemData: PropTypes.object,
 };
 
 MaterialListCheck.defaultProps = {

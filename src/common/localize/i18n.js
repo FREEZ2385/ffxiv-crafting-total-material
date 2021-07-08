@@ -16,7 +16,7 @@ const resources = {
 i18n.use(initReactI18next).init({
   resources: resources,
   fallbackLng: 'ja',
-  debug: true,
+  debug: false,
   keySeparator: false,
   interpolation: {
     escapeValue: false,

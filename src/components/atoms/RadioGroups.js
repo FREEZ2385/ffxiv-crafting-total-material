@@ -11,10 +11,10 @@ function RadioGroup(props) {
   // eslint-disable-next-line react/prop-types
   const { options, onChange } = props;
   return (
-    <div className="radio-group">
+    <div className="radio-group" key="radio-group">
       <Radio.Group optionType="button" buttonStyle="solid" onChange={onChange}>
         {options.map((row) => (
-          <Radio.Button value={row.value}>
+          <Radio.Button value={row.value} key={row.value}>
             <Icon component={row.icon} style={{ marginRight: 5 }} />
             {i18n.t(row.text)}
           </Radio.Button>
@@ -23,11 +23,11 @@ function RadioGroup(props) {
     </div>
   );
 }
-RadioGroup.PropTypes = {
+RadioGroup.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
-      text: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
       icon: PropTypes.elementType,
     })
   ).isRequired,

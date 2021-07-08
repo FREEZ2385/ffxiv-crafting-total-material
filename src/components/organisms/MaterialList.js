@@ -85,7 +85,7 @@ function MaterialList(props) {
     </Drawer>
   );
 }
-MaterialList.PropTypes = {
+MaterialList.propTypes = {
   onOpen: PropTypes.bool,
   setOnOpen: PropTypes.func,
   materialListData: PropTypes.object,

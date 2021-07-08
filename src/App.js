@@ -127,7 +127,9 @@ function App() {
         className="sidebar-area"
       >
         <div className="title-area">
-          <text style={{ fontSize: 18 }}>{i18n.t('right-sidemenu-title')}</text>
+          <Typography style={{ fontSize: 18, color: '#ffffff' }}>
+            {i18n.t('right-sidemenu-title')}
+          </Typography>
         </div>
         <div className="crafting-list-area">
           <Menu
@@ -147,6 +149,7 @@ function App() {
               }
             />
             <Menu.Item
+              key="Calculate"
               onClick={() => {
                 dispatch(garlandsActions.calculateCraftingList(craftingList));
                 setMaterialListOpen(true);
