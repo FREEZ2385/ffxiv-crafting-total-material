@@ -7,7 +7,7 @@ import i18n from '../../common/localize/i18n';
 
 import './scss/CrafterRecipes.scss';
 import commonActions from '../../state/ducks/common/actions';
-import { GithubFilled, MailFilled } from '@ant-design/icons';
+import { GithubFilled } from '@ant-design/icons';
 
 function Setting() {
   const dispatch = useDispatch();
@@ -72,9 +72,6 @@ function Setting() {
             }
           >
             Contact Github
-          </Button>
-          <Button type="primary" icon={<MailFilled />}>
-            Contact Email
           </Button>
         </Col>
         <Col span={2} />
