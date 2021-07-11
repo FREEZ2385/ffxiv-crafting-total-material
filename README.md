@@ -12,6 +12,7 @@ This application is Non-commercial application. Final Fantasy XIV ("**FFXIV**") 
 
 - ReactJS
 - XIVAPI
+- Ant Design
 
 ## How about using this application
 
