@@ -1,5 +1,6 @@
 {
   "name": "ffxiv_crafting_total_material",
+  "homepage": "http://freez2385.github.io/ffxiv-crafting-total-material/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -26,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm build && gh-pages -d build"
+    "deploy": "npm run build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
