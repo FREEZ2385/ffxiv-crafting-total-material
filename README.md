@@ -1,6 +1,6 @@
 # FFXIV CRAFTING TOTAL MATERIAL
 
-URL : http://freez2385.github.io/ffxiv_crafting_total_material
+URL : http://freez2385.github.io/ffxiv-crafting-total-material
 
 ![readme1](README/image/screenshot1.png)
 
