@@ -13,6 +13,11 @@ import Setting from './components/pages/Setting';
 function App() {
   const { Footer, Sider, Content } = Layout;
 
+  const currentYear = new Date().getFullYear();
+
+  // eslint-disable-next-line no-undef
+  const p = require('../package.json');
+
   const { craftingList, resultList } = useSelector(
     (state) => state.garlandsReducer
   );
@@ -69,7 +74,7 @@ function App() {
             <Typography style={{ color: 'white' }}>CTM</Typography>
           )}
           {!leftSideBarCollapsed && (
-            <Typography style={{ color: 'white' }}>v0.1.0</Typography>
+            <Typography style={{ color: 'white' }}>v{p.version}</Typography>
           )}
         </div>
 
@@ -107,8 +112,8 @@ function App() {
         <Footer style={{ textAlign: 'center', fontSize: 12 }}>
           FINAL FANTASY is a registered trademark of Square Enix Holdings Co.
           Ltd. <br />
-          FINAL FANTASY XIV © 2010 - 2021 SQUARE ENIX CO., LTD. All Rights
-          Reserved.
+          FINAL FANTASY XIV © 2010 - {currentYear} SQUARE ENIX CO., LTD. All
+          Rights Reserved.
         </Footer>
       </Layout>
       <Sider
