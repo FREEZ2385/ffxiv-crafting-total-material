@@ -1,16 +1,17 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Input, Table, Image, Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import Highlighter from 'react-highlight-words';
 
 function RecipeTable(props) {
   // eslint-disable-next-line react/prop-types
   // eslint-disable-next-line no-unused-vars
   const { columns, data, onAddButtonClick } = props;
-
-  const { Search } = Input;
+  const [filteredData, setFilteredData] = useState(data);
+  const [value, setValue] = useState('');
 
   const addfilteredcolumns = () => {
     const newFilteredColumns = columns.map((column) => {
@@ -31,6 +32,20 @@ function RecipeTable(props) {
         key: column.name,
         width: column.width,
         align: column.align,
+        // eslint-disable-next-line react/display-name
+        render: (text) => (
+          <div>
+            <Highlighter
+              highlightStyle={{
+                backgroundColor: '#ffc069',
+                padding: 0,
+              }}
+              searchWords={[value]}
+              autoEscape
+              textToHighlight={text ? text.toString() : ''}
+            />
+          </div>
+        ),
       };
     });
     newFilteredColumns.push({
@@ -57,7 +72,7 @@ function RecipeTable(props) {
   };
 
   const addfilteredDatas = () => {
-    const newFilteredDatas = data.map((dat, index) => {
+    const newFilteredDatas = filteredData.map((dat, index) => {
       return { ...dat, key: index };
     });
     return newFilteredDatas;
@@ -65,15 +80,23 @@ function RecipeTable(props) {
 
   return (
     <div>
-      <Search
-        placeholder="input search text"
-        onChange={(e) => {
-          console.log(e.target.value);
-        }}
-        style={{
-          width: 200,
-        }}
-      />
+      <div style={{ display: 'flex', justifyContent: 'right' }}>
+        <Input
+          placeholder="search item name"
+          value={value}
+          onChange={(e) => {
+            const currValue = e.target.value;
+            setValue(currValue);
+            const filteredData = data.filter((entry) =>
+              entry.name.toLowerCase().includes(currValue)
+            );
+            setFilteredData(filteredData);
+          }}
+          style={{
+            width: 200,
+          }}
+        />
+      </div>
       <Table
         columns={addfilteredcolumns()}
         dataSource={addfilteredDatas()}
