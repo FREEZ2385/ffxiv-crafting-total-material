@@ -2,13 +2,15 @@
 /* eslint-disable react/jsx-key */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table, Image, Button } from 'antd';
+import { Input, Table, Image, Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
 function RecipeTable(props) {
   // eslint-disable-next-line react/prop-types
   // eslint-disable-next-line no-unused-vars
   const { columns, data, onAddButtonClick } = props;
+
+  const { Search } = Input;
 
   const addfilteredcolumns = () => {
     const newFilteredColumns = columns.map((column) => {
@@ -62,13 +64,24 @@ function RecipeTable(props) {
   };
 
   return (
-    <Table
-      columns={addfilteredcolumns()}
-      dataSource={addfilteredDatas()}
-      size="small"
-      pagination={false}
-      scroll={{ y: 'calc(80vh - 300px)' }}
-    />
+    <div>
+      <Search
+        placeholder="input search text"
+        onChange={(e) => {
+          console.log(e.target.value);
+        }}
+        style={{
+          width: 200,
+        }}
+      />
+      <Table
+        columns={addfilteredcolumns()}
+        dataSource={addfilteredDatas()}
+        size="small"
+        pagination={false}
+        scroll={{ y: 'calc(80vh - 300px)' }}
+      />
+    </div>
   );
 }
 
