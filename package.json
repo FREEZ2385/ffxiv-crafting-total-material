@@ -1,8 +1,11 @@
 {
   "name": "ffxiv_crafting_total_material",
   "homepage": "https://www.ffxivctm.com/",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "@testing-library/jest-dom": "^5.14.1",
