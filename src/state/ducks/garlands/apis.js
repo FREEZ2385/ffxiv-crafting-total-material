@@ -46,6 +46,26 @@ export const getLevelingItemInfo = async (lang, jobID, minLv, maxLv) => {
   }
 };
 
+export const getJobEquipListInfo = async (lang, jobID, minLv, maxLv) => {
+  try {
+    if (!lang || !jobID || !minLv || !maxLv) {
+      throw new Error('Not Required parameters');
+    }
+    const response = axios.get(`https://xivapi.com/search`, {
+      params: {
+        filters: `LevelEquip>${minLv},LevelEquip<=${maxLv},ClassJobCategory.ID=${jobID},Recipes.ID!`,
+        language: lang,
+        sort_field: 'LevelEquip',
+        columns: 'ID,Icon,Name,Recipes.0.ID,LevelEquip',
+        snake_case: '1',
+      },
+    });
+    return response;
+  } catch (e) {
+    throw e;
+  }
+};
+
 export const getItemInfo = async (lang, itemNo) => {
   try {
     if (!lang || !itemNo) {

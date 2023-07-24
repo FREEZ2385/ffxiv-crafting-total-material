@@ -19,6 +19,10 @@ const garlandsActions = createActions({
   getCraftRecipeList: (jobName, recipeCode) => ({ jobName, recipeCode }),
   getCraftRecipeListSuccess: (data) => ({ data }),
 
+  // Actions of job Equipment List
+  getJobEquipList: (jobName, recipeCode) => ({ jobName, recipeCode }),
+  getJobEquipListSuccess: (data) => ({ data }),
+
   // Actions of Crafting List
   addCraftingList: (itemData) => ({ itemData }),
   setCraftingEA: (index, value) => ({ index, value }),

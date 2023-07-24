@@ -1,4 +1,9 @@
-import { getLevelingItemInfo, testApi, getRecipeInfo } from './apis';
+import {
+  getLevelingItemInfo,
+  testApi,
+  getRecipeInfo,
+  getJobEquipListInfo,
+} from './apis';
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { default as actions } from './actions';
 import recipeTableList from '../../../common/craftRecipeList';
@@ -19,6 +24,9 @@ function* doGetLevelingAction() {
   }
 }
 
+/* 
+  Craft recipe List by craft level
+*/
 function* doGetCraftRecipeList({ payload }) {
   try {
     const { language } = yield select((state) => state.commonReducer);
@@ -26,6 +34,45 @@ function* doGetCraftRecipeList({ payload }) {
     const filteredOption = recipeTableList[payload.jobName][payload.recipeCode];
     const response = yield call(
       getLevelingItemInfo,
+      language,
+      filteredOption.id,
+      filteredOption.minLevel,
+      filteredOption.maxLevel
+    );
+    const searchList = response.data['results'];
+    const itemList = searchList.map((data) => {
+      return {
+        icon: `https://xivapi.com/${data.icon}`,
+        name: data.name,
+        id: data.id,
+        recipe: data.recipes[0].id,
+      };
+    });
+    yield put(actions.getCraftRecipeListSuccess(itemList));
+  } catch (e) {
+    console.error('error of doGetCraftRecipeList');
+    console.log(e);
+  }
+}
+
+/* 
+  Craft recipe List by craft level
+*/
+
+/* memo
+ LevelEquip>35,
+ LevelEquip<=40,
+ ClassJobCategory.DRK=1,
+ Recipes.ID!,
+ EquipSlotCategory.ID=3 
+*/
+function* doGetJobEquipList({ payload }) {
+  try {
+    const { language } = yield select((state) => state.commonReducer);
+    if (payload.recipeCode === '') return false;
+    const filteredOption = recipeTableList[payload.jobName][payload.recipeCode];
+    const response = yield call(
+      getJobEquipListInfo,
       language,
       filteredOption.id,
       filteredOption.minLevel,
@@ -128,6 +175,7 @@ function* doCalculateCraftingList({ payload }) {
 
 function* garlandsRootSaga() {
   yield takeEvery(actions.getLevelingAction, doGetLevelingAction);
+  yield takeEvery(actions.getJobEquipList, doGetJobEquipList);
   yield takeEvery(actions.getCraftRecipeList, doGetCraftRecipeList);
   yield takeEvery(actions.calculateCraftingList, doCalculateCraftingList);
 }
