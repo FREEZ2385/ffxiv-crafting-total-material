@@ -18,8 +18,21 @@ function* doChangeLanguage({ payload }) {
   }
 }
 
+function* doChangePage() {
+  try {
+    yield put(garlandsActions.clearCraftingList());
+    yield put(garlandsActions.clearCraftRecipeList());
+    yield put(garlandsActions.clearJobEquipmentList());
+    yield put(garlandsActions.clearResultList());
+  } catch (e) {
+    console.error('error of doChangeSetting');
+    console.log(e);
+    yield put(actions.closeLoading());
+  }
+}
 function* commonRootSaga() {
   yield takeEvery(actions.changeLanguage, doChangeLanguage);
+  yield takeEvery(actions.changePage, doChangePage);
 }
 
 export default commonRootSaga;

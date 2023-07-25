@@ -53,7 +53,7 @@ export const getJobEquipListInfo = async (lang, jobID, minLv, maxLv) => {
     }
     const response = axios.get(`https://xivapi.com/search`, {
       params: {
-        filters: `LevelEquip>${minLv},LevelEquip<=${maxLv},ClassJobCategory.${jobID}=1,Recipes.ID!`,
+        filters: `LevelEquip>=${minLv},LevelEquip<=${maxLv},ClassJobCategory.${jobID}=1,Recipes.ID!,BaseParam0TargetID<6`,
         language: lang,
         sort_field: 'LevelEquip',
         columns: 'ID,Icon,Name,Recipes.0.ID,LevelEquip,EquipSlotCategory',

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import garlandsActions from './state/ducks/garlands/actions';
 import i18n from './common/localize/i18n';
 import Setting from './components/pages/Setting';
+import commonActions from './state/ducks/common/actions';
 
 function App() {
   const { Footer, Sider, Content } = Layout;
@@ -83,7 +84,11 @@ function App() {
           theme="light"
           defaultSelectedKeys={pageKey}
           mode="inline"
-          onClick={(item) => setPageKey(item.key)}
+          onClick={(item) => {
+            setPageKey(item.key);
+            dispatch(commonActions.changePage())
+            }
+          }
           className="sidebar-area"
         >
           <Menu.Item

@@ -88,7 +88,7 @@ function RecipeTable(props) {
             const currValue = e.target.value;
             setValue(currValue);
             const filteredData = data.filter((entry) =>
-              entry.name.toLowerCase().includes(currValue)
+              entry.name.toLowerCase().includes(currValue.toLowerCase())
             );
             setFilteredData(filteredData);
           }}
