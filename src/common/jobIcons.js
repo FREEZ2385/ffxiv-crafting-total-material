@@ -1,21 +1,24 @@
 // action job
-import Paladin from '../assets/img/icon/paladin.png';
-import Warrior from '../assets/img/icon/warrior.png';
-import Gunbreaker from '../assets/img/icon/gunbreaker.png';
-import Darkknight from '../assets/img/icon/darkknight.png';
-import Samurai from '../assets/img/icon/samurai.png';
-import Dragoon from '../assets/img/icon/dragoon.png';
-import Monk from '../assets/img/icon/monk.png';
-import Ninja from '../assets/img/icon/ninja.png';
-import Bard from '../assets/img/icon/bard.png';
-import Machinist from '../assets/img/icon/machinist.png';
-import Dancer from '../assets/img/icon/dancer.png';
-import Blackmage from '../assets/img/icon/blackmage.png';
-import Summoner from '../assets/img/icon/summoner.png';
-import Redmage from '../assets/img/icon/redmage.png';
-import Whitemage from '../assets/img/icon/whitemage.png';
-import Scholar from '../assets/img/icon/scholar.png';
-import Astrologian from '../assets/img/icon/astrologian.png';
+import { ReactComponent as Paladin } from '../assets/img/icon/class_job_019.svg';
+import { ReactComponent as Warrior } from '../assets/img/icon/class_job_021.svg';
+import { ReactComponent as Gunbreaker } from '../assets/img/icon/class_job_037.svg';
+import { ReactComponent as Darkknight } from '../assets/img/icon/class_job_032.svg';
+import { ReactComponent as Samurai } from '../assets/img/icon/class_job_034.svg';
+import { ReactComponent as Dragoon } from '../assets/img/icon/class_job_022.svg';
+import { ReactComponent as Monk } from '../assets/img/icon/class_job_020.svg';
+import { ReactComponent as Ninja } from '../assets/img/icon/class_job_030.svg';
+import { ReactComponent as Bard } from '../assets/img/icon/class_job_023.svg';
+import { ReactComponent as Machinist } from '../assets/img/icon/class_job_031.svg';
+import { ReactComponent as Dancer } from '../assets/img/icon/class_job_038.svg';
+import { ReactComponent as Blackmage } from '../assets/img/icon/class_job_025.svg';
+import { ReactComponent as Summoner } from '../assets/img/icon/class_job_027.svg';
+import { ReactComponent as Redmage } from '../assets/img/icon/class_job_035.svg';
+import { ReactComponent as Whitemage } from '../assets/img/icon/class_job_024.svg';
+import { ReactComponent as Scholar } from '../assets/img/icon/class_job_028.svg';
+import { ReactComponent as Astrologian } from '../assets/img/icon/class_job_033.svg';
+import { ReactComponent as BlueMage } from '../assets/img/icon/class_job_036.svg';
+import { ReactComponent as Reaper } from '../assets/img/icon/class_job_039.svg';
+import { ReactComponent as Sage } from '../assets/img/icon/class_job_040.svg';
 
 // craft job
 import { ReactComponent as Carpenter } from '../assets/img/icon/class_job_008.svg';
@@ -36,15 +39,18 @@ export const actionJobIcons = {
   Dragoon,
   Monk,
   Ninja,
+  Reaper,
   Bard,
   Machinist,
   Dancer,
   Blackmage,
   Summoner,
   Redmage,
+  BlueMage,
   Whitemage,
   Scholar,
   Astrologian,
+  Sage,
 };
 
 export const craftJobIcons = {

@@ -1,4 +1,9 @@
-import { getLevelingItemInfo, testApi, getRecipeInfo } from './apis';
+import {
+  getLevelingItemInfo,
+  testApi,
+  getRecipeInfo,
+  getJobEquipListInfo,
+} from './apis';
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { default as actions } from './actions';
 import recipeTableList from '../../../common/craftRecipeList';
@@ -9,6 +14,7 @@ import {
   getMaterialData,
 } from '../../../common/functions';
 import commonActions from '../common/actions';
+import { levelingOptions } from '../../../common/optionList';
 
 function* doGetLevelingAction() {
   try {
@@ -19,6 +25,9 @@ function* doGetLevelingAction() {
   }
 }
 
+/* 
+  Craft recipe List by craft level
+*/
 function* doGetCraftRecipeList({ payload }) {
   try {
     const { language } = yield select((state) => state.commonReducer);
@@ -43,6 +52,43 @@ function* doGetCraftRecipeList({ payload }) {
     yield put(actions.getCraftRecipeListSuccess(itemList));
   } catch (e) {
     console.error('error of doGetCraftRecipeList');
+    console.log(e);
+  }
+}
+
+/* 
+  Craft recipe List by Job Equipment List
+*/
+function* doGetJobEquipmentList({ payload }) {
+  try {
+    const { language } = yield select((state) => state.commonReducer);
+    if (payload.recipeCode === '') return false;
+    const filteredOption = levelingOptions[payload.recipeCode];
+    const response = yield call(
+      getJobEquipListInfo,
+      language,
+      payload.jobName,
+      filteredOption.minLevel,
+      filteredOption.maxLevel
+    );
+    const searchList = response.data['results'];
+    const itemList = searchList.map((data) => {
+      delete data.equip_slot_category.id;
+      const equipCategory = Object.keys(data.equip_slot_category).find(key => data.equip_slot_category[key] === 1);
+      return {
+        icon: `https://xivapi.com/${data.icon}`,
+        name: data.name,
+        id: data.id,
+        equipcategory: equipCategory,
+        equiplevel: data.level_equip,
+        recipe: data.recipes[0].id,
+      };
+    });
+
+    yield put(actions.clearJobEquipmentList());
+    yield put(actions.getJobEquipmentListSuccess(itemList));
+  } catch (e) {
+    console.error('error of doGetJobEquipmentList');
     console.log(e);
   }
 }
@@ -128,6 +174,7 @@ function* doCalculateCraftingList({ payload }) {
 
 function* garlandsRootSaga() {
   yield takeEvery(actions.getLevelingAction, doGetLevelingAction);
+  yield takeEvery(actions.getJobEquipmentList, doGetJobEquipmentList);
   yield takeEvery(actions.getCraftRecipeList, doGetCraftRecipeList);
   yield takeEvery(actions.calculateCraftingList, doCalculateCraftingList);
 }

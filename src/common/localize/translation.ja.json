@@ -10,6 +10,7 @@
 
 
     "left-sidemenu-1": "クラフター製作手帳",
+    "left-sidemenu-2": "ジョブレベル別装備",
     "left-sidemenu-setting": "設定",
 
     "right-sidemenu-title": "製作一蘭",
@@ -18,6 +19,9 @@
 
     "crafter-recipes-title": "クラフター製作手帳から検索",
     "crafter-recipes-pulldown-leveling": "レベル別",
+
+    "job-leveling-title": "ジョブレベル別検索",
+    "job-leveling-pulldown-leveling": "レベル別",
 
     "setting-language": "言語",
     "setting-contact": "問い合わせ先 / フィードバック",

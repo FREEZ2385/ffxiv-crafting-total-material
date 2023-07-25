@@ -1,7 +1,7 @@
 {
   "name": "ffxiv_crafting_total_material",
   "homepage": "https://www.ffxivctm.com/",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "engines": {
     "node": "16.x"
@@ -17,6 +17,7 @@
     "node-sass": "^6.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-highlight-words": "^0.20.0",
     "react-i18next": "^11.11.0",
     "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",

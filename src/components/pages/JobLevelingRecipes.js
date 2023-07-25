@@ -2,8 +2,8 @@ import { Row, Col, Typography } from 'antd';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  actionJobRadioOptions,
   crafterRecipesPullDownOptions,
-  crafterRecipesRadioOptions,
 } from '../../common/optionList';
 import garlandsActions from '../../state/ducks/garlands/actions';
 import Pulldown from '../atoms/Pulldown';
@@ -12,30 +12,31 @@ import RecipeTable from '../molecules/RecipeTable';
 import i18n from '../../common/localize/i18n';
 
 import './scss/CrafterRecipes.scss';
+import { equipCategoryOptions } from '../../common/itemOption';
 
-function CrafterRecipes() {
+function JobLevelingRecipes() {
   const [radioSelect, setRadioSelect] = useState('');
   const [pulldownSelect, setPulldownSelect] = useState('');
-  const { craftRecipeList } = useSelector((state) => state.garlandsReducer);
+  const { jobEquipmentList } = useSelector((state) => state.garlandsReducer);
 
   const dispatch = useDispatch();
   return (
     <div className="crafter-recipes">
       <div className="header-area">
-        <Row justify="center" style={{ height: 30, marginBottom: 30 }}>
+        <Row justify="center" style={{ height: '4vh', marginBottom: '2vh' }}>
           <Col span={24} style={{ textAlign: 'center', fontSize: 28 }}>
             <Typography style={{ color: '#999999' }}>
-              {i18n.t('crafter-recipes-title')}
+              {i18n.t('job-leveling-title')}
             </Typography>
           </Col>
         </Row>
         <Row justify="center">
           <Col span={24} style={{ textAlign: 'center', fontSize: 40 }}>
             <RadioGroup
-              options={crafterRecipesRadioOptions}
+              options={actionJobRadioOptions}
               onChange={(e) => {
                 dispatch(
-                  garlandsActions.getCraftRecipeList(
+                  garlandsActions.getJobEquipmentList(
                     e.target.value,
                     pulldownSelect
                   )
@@ -53,7 +54,7 @@ function CrafterRecipes() {
                 options={crafterRecipesPullDownOptions}
                 onChange={(value) => {
                   dispatch(
-                    garlandsActions.getCraftRecipeList(radioSelect, value)
+                    garlandsActions.getJobEquipmentList(radioSelect, value)
                   );
                   setPulldownSelect(value);
                 }}
@@ -67,11 +68,11 @@ function CrafterRecipes() {
       <div className="table-area">
         <Row
           justify="center"
-          style={{ height: 'calc(80vh - 190px)', padding: '20px' }}
+          style={{ height: 'calc(70vh - 160px)', padding: '20px' }}
         >
           <Col span={1}></Col>
-          <Col span={22} style={{ textAlign: 'center', fontSize: 32 }}>
-            {craftRecipeList.length !== 0 && (
+          <Col span={22} style={{ textAlign: 'center', fontSize: 15 }}>
+            {jobEquipmentList.length !== 0 && (
               <RecipeTable
                 columns={[
                   { name: 'icon', title: '', width: 60, align: 'center' },
@@ -80,12 +81,19 @@ function CrafterRecipes() {
                     title: 'Name',
                     align: 'left',
                   },
+                  {
+                    name: 'equiplevel',
+                    width: '5vw',
+                    title: 'Level',
+                    align: 'center',
+                  },
                 ]}
-                data={craftRecipeList}
+                data={jobEquipmentList}
+                filterOptions={equipCategoryOptions}
                 onAddButtonClick={(value) => {
                   dispatch(garlandsActions.addCraftingList(value));
                 }}
-                height='calc(80vh - 300px)'
+                height='calc(70vh - 300px)'
               />
             )}
           </Col>
@@ -96,4 +104,4 @@ function CrafterRecipes() {
   );
 }
 
-export default CrafterRecipes;
+export default JobLevelingRecipes;

@@ -1,4 +1,4 @@
-import { craftJobIcons } from './jobIcons';
+import { actionJobIcons, craftJobIcons } from './jobIcons';
 
 export const crafterRecipesRadioOptions = [
   {
@@ -43,6 +43,109 @@ export const crafterRecipesRadioOptions = [
   },
 ];
 
+export const actionJobRadioOptions = [
+  {
+    value: 'PLD',
+    text: 'paladin',
+    icon: actionJobIcons.Paladin,
+  },
+  {
+    value: 'WAR',
+    text: 'warrior',
+    icon: actionJobIcons.Warrior,
+  },
+  {
+    value: 'GNB',
+    text: 'gunbreaker',
+    icon: actionJobIcons.Gunbreaker,
+  },
+  {
+    value: 'DRK',
+    text: 'darkknight',
+    icon: actionJobIcons.Darkknight,
+  },
+  {
+    value: 'SAM',
+    text: 'samurai',
+    icon: actionJobIcons.Samurai,
+  },
+  {
+    value: 'DRG',
+    text: 'dragoon',
+    icon: actionJobIcons.Dragoon,
+  },
+  {
+    value: 'MNK',
+    text: 'monk',
+    icon: actionJobIcons.Monk,
+  },
+  {
+    value: 'NIN',
+    text: 'ninja',
+    icon: actionJobIcons.Ninja,
+  },
+  {
+    value: 'RPR',
+    text: 'reaper',
+    icon: actionJobIcons.Reaper,
+  },
+  {
+    value: 'BRD',
+    text: 'bard',
+    icon: actionJobIcons.Bard,
+  },
+  {
+    value: 'MCH',
+    text: 'machinist',
+    icon: actionJobIcons.Machinist,
+  },
+  {
+    value: 'DNC',
+    text: 'dancer',
+    icon: actionJobIcons.Dancer,
+  },
+  {
+    value: 'BLM',
+    text: 'blackmage',
+    icon: actionJobIcons.Blackmage,
+  },
+  {
+    value: 'SMN',
+    text: 'summoner',
+    icon: actionJobIcons.Summoner,
+  },
+  {
+    value: 'RDM',
+    text: 'redmage',
+    icon: actionJobIcons.Redmage,
+  },
+  {
+    value: 'BLU',
+    text: 'blueMage',
+    icon: actionJobIcons.BlueMage,
+  },
+  {
+    value: 'WHM',
+    text: 'whitemage',
+    icon: actionJobIcons.Whitemage,
+  },
+  {
+    value: 'SCH',
+    text: 'scholar',
+    icon: actionJobIcons.Scholar,
+  },
+  {
+    value: 'AST',
+    text: 'astrologian',
+    icon: actionJobIcons.Astrologian,
+  },
+  {
+    value: 'SGE',
+    text: 'sage',
+    icon: actionJobIcons.Sage,
+  }
+];
+
 export const crafterRecipesPullDownOptions = [
   {
     text: `-------Level-------`,
@@ -67,3 +170,24 @@ export const crafterRecipesPullDownOptions = [
   { text: '81 ~ 86', value: 'lev-17' },
   { text: '86 ~ 90', value: 'lev-18' },
 ];
+
+export const levelingOptions = {
+  'lev-1': { minLevel: '1', maxLevel: '5' },
+  'lev-2': { minLevel: '6', maxLevel: '10' },
+  'lev-3': { minLevel: '11', maxLevel: '15' },
+  'lev-4': { minLevel: '16', maxLevel: '20' },
+  'lev-5': { minLevel: '21', maxLevel: '25' },
+  'lev-6': { minLevel: '26', maxLevel: '30' },
+  'lev-7': { minLevel: '31', maxLevel: '35' },
+  'lev-8': { minLevel: '36', maxLevel: '40' },
+  'lev-9': { minLevel: '41', maxLevel: '45' },
+  'lev-10': { minLevel: '46', maxLevel: '50' },
+  'lev-11': { minLevel: '51', maxLevel: '55' },
+  'lev-12': { minLevel: '56', maxLevel: '60' },
+  'lev-13': { minLevel: '61', maxLevel: '65' },
+  'lev-14': { minLevel: '66', maxLevel: '70' },
+  'lev-15': { minLevel: '71', maxLevel: '75' },
+  'lev-16': { minLevel: '76', maxLevel: '80' },
+  'lev-17': { minLevel: '81', maxLevel: '85' },
+  'lev-18': { minLevel: '86', maxLevel: '90' },
+};

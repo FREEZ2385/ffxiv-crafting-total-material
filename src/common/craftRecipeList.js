@@ -21,8 +21,8 @@ const recipeTableList = {
   },
   Blacksmith: {
     'lev-1': { id: 9, minLevel: '1', maxLevel: '5' },
-    'lev-3': { id: 9, minLevel: '11', maxLevel: '15' },
     'lev-2': { id: 9, minLevel: '6', maxLevel: '10' },
+    'lev-3': { id: 9, minLevel: '11', maxLevel: '15' },
     'lev-4': { id: 9, minLevel: '16', maxLevel: '20' },
     'lev-5': { id: 9, minLevel: '21', maxLevel: '25' },
     'lev-6': { id: 9, minLevel: '26', maxLevel: '30' },

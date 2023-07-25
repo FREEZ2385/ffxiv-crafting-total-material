@@ -13,11 +13,16 @@ const garlandsActions = createActions({
   // clear Actions
   clearCraftingList: () => ({}),
   clearCraftRecipeList: () => ({}),
+  clearJobEquipmentList: () => ({}),
   clearResultList: () => ({}),
 
   // Actions of Recipe List
   getCraftRecipeList: (jobName, recipeCode) => ({ jobName, recipeCode }),
   getCraftRecipeListSuccess: (data) => ({ data }),
+
+  // Actions of job Equipment List
+  getJobEquipmentList: (jobName, recipeCode) => ({ jobName, recipeCode }),
+  getJobEquipmentListSuccess: (data) => ({ data }),
 
   // Actions of Crafting List
   addCraftingList: (itemData) => ({ itemData }),

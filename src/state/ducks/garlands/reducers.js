@@ -9,6 +9,7 @@ import garlandActions from './actions';
 const initialData = {
   levelingData: [],
   craftRecipeList: [],
+  jobEquipmentList: [],
   craftingList: [],
   resultList: {
     craftingList: {},
@@ -56,6 +57,10 @@ const reducer = handleActions(
       ...state,
       craftRecipeList: [],
     }),
+    [garlandActions.clearJobEquipmentList]: (state) => ({
+      ...state,
+      jobEquipmentList: [],
+    }),
     [garlandActions.clearResultList]: (state) => ({
       ...state,
       resultList: {
@@ -70,6 +75,11 @@ const reducer = handleActions(
     [garlandActions.getCraftRecipeListSuccess]: (state, action) => ({
       ...state,
       craftRecipeList: action.payload.data,
+    }),
+
+    [garlandActions.getJobEquipmentListSuccess]: (state, action) => ({
+      ...state,
+      jobEquipmentList: action.payload.data,
     }),
 
     [garlandActions.addCraftingList]: (state, action) => ({

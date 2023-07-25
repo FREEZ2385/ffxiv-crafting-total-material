@@ -11,6 +11,8 @@ const commonActions = createActions({
 
   changeLanguage: (lng) => ({ lng }),
   changeLanguageSuccess: (lng) => ({ lng }),
+
+  changePage: () => ({}),
 });
 
 export default commonActions;
