@@ -10,7 +10,7 @@ import Highlighter from 'react-highlight-words';
 function RecipeTable(props) {
   // eslint-disable-next-line react/prop-types
   // eslint-disable-next-line no-unused-vars
-  const { columns, data, filterOptions, onAddButtonClick } = props;
+  const { columns, data, filterOptions, onAddButtonClick, height } = props;
   const [filteredData, setFilteredData] = useState(data);
   const [value, setValue] = useState('');
 
@@ -111,7 +111,7 @@ function RecipeTable(props) {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
         <div>
           {filterOptions.length !== 0 && (
             <Popover placement="bottom" title="Category Filters" content={(
@@ -153,7 +153,7 @@ function RecipeTable(props) {
         dataSource={addfilteredDatas()}
         size="small"
         pagination={false}
-        scroll={{ y: 'calc(80vh - 300px)' }}
+        scroll={{ y: height }}
       />
     </div>
   );
@@ -162,6 +162,7 @@ function RecipeTable(props) {
 RecipeTable.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   data: PropTypes.array.isRequired,
+  height: PropTypes.string.isRequired,
   filterOptions: PropTypes.array,
   onAddButtonClick: PropTypes.func,
 };

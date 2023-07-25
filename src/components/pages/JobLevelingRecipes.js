@@ -68,7 +68,7 @@ function JobLevelingRecipes() {
       <div className="table-area">
         <Row
           justify="center"
-          style={{ height: 'calc(80vh - 170px)', padding: '20px' }}
+          style={{ height: 'calc(70vh - 160px)', padding: '20px' }}
         >
           <Col span={1}></Col>
           <Col span={22} style={{ textAlign: 'center', fontSize: 15 }}>
@@ -93,6 +93,7 @@ function JobLevelingRecipes() {
                 onAddButtonClick={(value) => {
                   dispatch(garlandsActions.addCraftingList(value));
                 }}
+                height='calc(70vh - 300px)'
               />
             )}
           </Col>

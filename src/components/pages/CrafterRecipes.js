@@ -67,7 +67,7 @@ function CrafterRecipes() {
       <div className="table-area">
         <Row
           justify="center"
-          style={{ height: 'calc(80vh - 170px)', padding: '20px' }}
+          style={{ height: 'calc(80vh - 190px)', padding: '20px' }}
         >
           <Col span={1}></Col>
           <Col span={22} style={{ textAlign: 'center', fontSize: 32 }}>
@@ -85,6 +85,7 @@ function CrafterRecipes() {
                 onAddButtonClick={(value) => {
                   dispatch(garlandsActions.addCraftingList(value));
                 }}
+                height='calc(80vh - 300px)'
               />
             )}
           </Col>
