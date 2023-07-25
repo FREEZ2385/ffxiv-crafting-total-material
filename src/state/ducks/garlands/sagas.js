@@ -14,6 +14,7 @@ import {
   getMaterialData,
 } from '../../../common/functions';
 import commonActions from '../common/actions';
+import { levelingOptions } from '../../../common/optionList';
 
 function* doGetLevelingAction() {
   try {
@@ -56,19 +57,17 @@ function* doGetCraftRecipeList({ payload }) {
 }
 
 /* 
-  Craft recipe List by craft level
+  Craft recipe List by Job Equipment List
 */
-
-
-function* doGetJobEquipList({ payload }) {
+function* doGetJobEquipmentList({ payload }) {
   try {
     const { language } = yield select((state) => state.commonReducer);
     if (payload.recipeCode === '') return false;
-    const filteredOption = recipeTableList[payload.jobName][payload.recipeCode];
+    const filteredOption = levelingOptions[payload.recipeCode];
     const response = yield call(
       getJobEquipListInfo,
       language,
-      filteredOption.id,
+      payload.jobName,
       filteredOption.minLevel,
       filteredOption.maxLevel
     );
@@ -78,12 +77,15 @@ function* doGetJobEquipList({ payload }) {
         icon: `https://xivapi.com/${data.icon}`,
         name: data.name,
         id: data.id,
+        equiplevel: data.level_equip,
         recipe: data.recipes[0].id,
       };
     });
-    yield put(actions.getCraftRecipeListSuccess(itemList));
+    console.log(itemList);
+    yield put(actions.clearJobEquipmentList());
+    yield put(actions.getJobEquipmentListSuccess(itemList));
   } catch (e) {
-    console.error('error of doGetCraftRecipeList');
+    console.error('error of doGetJobEquipmentList');
     console.log(e);
   }
 }
@@ -169,7 +171,7 @@ function* doCalculateCraftingList({ payload }) {
 
 function* garlandsRootSaga() {
   yield takeEvery(actions.getLevelingAction, doGetLevelingAction);
-  yield takeEvery(actions.getJobEquipList, doGetJobEquipList);
+  yield takeEvery(actions.getJobEquipmentList, doGetJobEquipmentList);
   yield takeEvery(actions.getCraftRecipeList, doGetCraftRecipeList);
   yield takeEvery(actions.calculateCraftingList, doCalculateCraftingList);
 }

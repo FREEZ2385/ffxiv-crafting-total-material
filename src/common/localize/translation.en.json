@@ -11,6 +11,7 @@
 
 
     "left-sidemenu-1": "Crafting Logs",
+    "left-sidemenu-2": "Jobs Equip List",
     "left-sidemenu-setting": "Setting",
 
     "right-sidemenu-title": "Crafting List",
@@ -19,6 +20,9 @@
 
     "crafter-recipes-title": "Find Crafting Log",
     "crafter-recipes-pulldown-leveling": "Leveling",
+
+    "job-leveling-title": "Job Leveling List",
+    "job-leveling-pulldown-leveling": "Leveling",
 
     "setting-language": "Language",
     "setting-contact": "Contact / Feedback",

@@ -120,6 +120,11 @@ export const actionJobRadioOptions = [
     icon: actionJobIcons.Redmage,
   },
   {
+    value: 'BLU',
+    text: 'blueMage',
+    icon: actionJobIcons.BlueMage,
+  },
+  {
     value: 'WHM',
     text: 'whitemage',
     icon: actionJobIcons.Whitemage,
@@ -138,8 +143,7 @@ export const actionJobRadioOptions = [
     value: 'SGE',
     text: 'sage',
     icon: actionJobIcons.Sage,
-  },
-  
+  }
 ];
 
 export const crafterRecipesPullDownOptions = [
@@ -166,3 +170,24 @@ export const crafterRecipesPullDownOptions = [
   { text: '81 ~ 86', value: 'lev-17' },
   { text: '86 ~ 90', value: 'lev-18' },
 ];
+
+export const levelingOptions = {
+  'lev-1': { minLevel: '1', maxLevel: '5' },
+  'lev-2': { minLevel: '6', maxLevel: '10' },
+  'lev-3': { minLevel: '11', maxLevel: '15' },
+  'lev-4': { minLevel: '16', maxLevel: '20' },
+  'lev-5': { minLevel: '21', maxLevel: '25' },
+  'lev-6': { minLevel: '26', maxLevel: '30' },
+  'lev-7': { minLevel: '31', maxLevel: '35' },
+  'lev-8': { minLevel: '36', maxLevel: '40' },
+  'lev-9': { minLevel: '41', maxLevel: '45' },
+  'lev-10': { minLevel: '46', maxLevel: '50' },
+  'lev-11': { minLevel: '51', maxLevel: '55' },
+  'lev-12': { minLevel: '56', maxLevel: '60' },
+  'lev-13': { minLevel: '61', maxLevel: '65' },
+  'lev-14': { minLevel: '66', maxLevel: '70' },
+  'lev-15': { minLevel: '71', maxLevel: '75' },
+  'lev-16': { minLevel: '76', maxLevel: '80' },
+  'lev-17': { minLevel: '81', maxLevel: '85' },
+  'lev-18': { minLevel: '86', maxLevel: '90' },
+};

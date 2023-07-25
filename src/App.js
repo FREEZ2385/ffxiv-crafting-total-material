@@ -3,6 +3,7 @@ import { ProfileOutlined, SettingOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import './App.scss';
 import CrafterRecipes from './components/pages/CrafterRecipes';
+import JobLevelingRecipes from './components/pages/JobLevelingRecipes';
 import CraftingList from './components/molecules/CraftingList';
 import MaterialList from './components/organisms/MaterialList';
 import { useDispatch, useSelector } from 'react-redux';
@@ -92,9 +93,9 @@ function App() {
           >
             {i18n.t('left-sidemenu-1')}
           </Menu.Item>
-          {/* <Menu.Item key="Leveling Jobs" icon={<AppstoreAddOutlined />}>
-            Leveling Jobs
-          </Menu.Item> */}
+          <Menu.Item key="Leveling Jobs" icon={<ProfileOutlined />}>
+            {i18n.t('left-sidemenu-2')}
+          </Menu.Item>
           <Menu.Item
             key="Setting"
             icon={<SettingOutlined />}
@@ -107,6 +108,7 @@ function App() {
       <Layout className="site-layout">
         <Content style={{ margin: '0 16px' }}>
           {pageKey === 'Crafter Recipes' && <CrafterRecipes />}
+          {pageKey === 'Leveling Jobs' && <JobLevelingRecipes />}
           {pageKey === 'Setting' && <Setting />}
         </Content>
         <Footer style={{ textAlign: 'center', fontSize: 12 }}>

@@ -9,6 +9,7 @@ function* doChangeLanguage({ payload }) {
     yield put(actions.changeLanguageSuccess(payload.lng));
     yield put(garlandsActions.clearCraftingList());
     yield put(garlandsActions.clearCraftRecipeList());
+    yield put(garlandsActions.clearJobEquipmentList());
     yield put(garlandsActions.clearResultList());
   } catch (e) {
     console.error('error of doChangeLanguage');
