@@ -1,4 +1,4 @@
-import { craftJobIcons } from './jobIcons';
+import { actionJobIcons, craftJobIcons } from './jobIcons';
 
 export const crafterRecipesRadioOptions = [
   {
@@ -41,6 +41,105 @@ export const crafterRecipesRadioOptions = [
     text: 'culinarian',
     icon: craftJobIcons.Culinarian,
   },
+];
+
+export const actionJobRadioOptions = [
+  {
+    value: 'PLD',
+    text: 'paladin',
+    icon: actionJobIcons.Paladin,
+  },
+  {
+    value: 'WAR',
+    text: 'warrior',
+    icon: actionJobIcons.Warrior,
+  },
+  {
+    value: 'GNB',
+    text: 'gunbreaker',
+    icon: actionJobIcons.Gunbreaker,
+  },
+  {
+    value: 'DRK',
+    text: 'darkknight',
+    icon: actionJobIcons.Darkknight,
+  },
+  {
+    value: 'SAM',
+    text: 'samurai',
+    icon: actionJobIcons.Samurai,
+  },
+  {
+    value: 'DRG',
+    text: 'dragoon',
+    icon: actionJobIcons.Dragoon,
+  },
+  {
+    value: 'MNK',
+    text: 'monk',
+    icon: actionJobIcons.Monk,
+  },
+  {
+    value: 'NIN',
+    text: 'ninja',
+    icon: actionJobIcons.Ninja,
+  },
+  {
+    value: 'RPR',
+    text: 'reaper',
+    icon: actionJobIcons.Reaper,
+  },
+  {
+    value: 'BRD',
+    text: 'bard',
+    icon: actionJobIcons.Bard,
+  },
+  {
+    value: 'MCH',
+    text: 'machinist',
+    icon: actionJobIcons.Machinist,
+  },
+  {
+    value: 'DNC',
+    text: 'dancer',
+    icon: actionJobIcons.Dancer,
+  },
+  {
+    value: 'BLM',
+    text: 'blackmage',
+    icon: actionJobIcons.Blackmage,
+  },
+  {
+    value: 'SMN',
+    text: 'summoner',
+    icon: actionJobIcons.Summoner,
+  },
+  {
+    value: 'RDM',
+    text: 'redmage',
+    icon: actionJobIcons.Redmage,
+  },
+  {
+    value: 'WHM',
+    text: 'whitemage',
+    icon: actionJobIcons.Whitemage,
+  },
+  {
+    value: 'SCH',
+    text: 'scholar',
+    icon: actionJobIcons.Scholar,
+  },
+  {
+    value: 'AST',
+    text: 'astrologian',
+    icon: actionJobIcons.Astrologian,
+  },
+  {
+    value: 'SGE',
+    text: 'sage',
+    icon: actionJobIcons.Sage,
+  },
+  
 ];
 
 export const crafterRecipesPullDownOptions = [

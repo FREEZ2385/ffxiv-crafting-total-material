@@ -16,6 +16,8 @@ import Redmage from '../assets/img/icon/redmage.png';
 import Whitemage from '../assets/img/icon/whitemage.png';
 import Scholar from '../assets/img/icon/scholar.png';
 import Astrologian from '../assets/img/icon/astrologian.png';
+import Reaper from '../assets/img/icon/reaper.png';
+import Sage from '../assets/img/icon/sage.png';
 
 // craft job
 import { ReactComponent as Carpenter } from '../assets/img/icon/class_job_008.svg';
@@ -36,6 +38,7 @@ export const actionJobIcons = {
   Dragoon,
   Monk,
   Ninja,
+  Reaper,
   Bard,
   Machinist,
   Dancer,
@@ -45,6 +48,7 @@ export const actionJobIcons = {
   Whitemage,
   Scholar,
   Astrologian,
+  Sage,
 };
 
 export const craftJobIcons = {

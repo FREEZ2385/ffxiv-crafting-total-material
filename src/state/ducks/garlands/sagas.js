@@ -59,13 +59,7 @@ function* doGetCraftRecipeList({ payload }) {
   Craft recipe List by craft level
 */
 
-/* memo
- LevelEquip>35,
- LevelEquip<=40,
- ClassJobCategory.DRK=1,
- Recipes.ID!,
- EquipSlotCategory.ID=3 
-*/
+
 function* doGetJobEquipList({ payload }) {
   try {
     const { language } = yield select((state) => state.commonReducer);
