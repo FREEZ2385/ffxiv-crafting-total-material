@@ -73,15 +73,18 @@ function* doGetJobEquipmentList({ payload }) {
     );
     const searchList = response.data['results'];
     const itemList = searchList.map((data) => {
+      delete data.equip_slot_category.id;
+      const equipCategory = Object.keys(data.equip_slot_category).find(key => data.equip_slot_category[key] === 1);
       return {
         icon: `https://xivapi.com/${data.icon}`,
         name: data.name,
         id: data.id,
+        equipcategory: equipCategory,
         equiplevel: data.level_equip,
         recipe: data.recipes[0].id,
       };
     });
-    console.log(itemList);
+
     yield put(actions.clearJobEquipmentList());
     yield put(actions.getJobEquipmentListSuccess(itemList));
   } catch (e) {

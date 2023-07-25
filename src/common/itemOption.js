@@ -1,39 +1,26 @@
-// EquipSlotCategory
-//     1:MainWeapon
-//     2:SubWeapon
-//     3:Head
-//     4:Body
-//     5:Gloves
-//     6:Waist
-//     7:Legs
-//     8:Feet
-//     9:Ears
-//     10:Neck
-//     11:Wrists
-//     12:FingerLR
-//     13:TwoHandsWeapon(DisableSubWeapon)
-//     14:TwoHandsWeapon(AbleSubWeapon)
-//     15:NoHeadBody
-//     16:NoGlovesLegsFeetBody
-//     17:SoulCrystal
-//     18:NoFeetLegs
-//     19:AllBody
-//     20:NoGlovesLegsBody
-//     21:NoLegsFeetBody
-//     22:NoGlovesBody
-//     23:None
+import { ReactComponent as Body } from '../assets/img/icon/Armoury_Body.svg';
+import { ReactComponent as Bracelets } from '../assets/img/icon/Armoury_Bracelets.svg';
+import { ReactComponent as Earrings } from '../assets/img/icon/Armoury_Earrings.svg';
+import { ReactComponent as Feet } from '../assets/img/icon/Armoury_Feet.svg';
+import { ReactComponent as Hands } from '../assets/img/icon/Armoury_Hands.svg';
+import { ReactComponent as Head } from '../assets/img/icon/Armoury_Head.svg';
+import { ReactComponent as Legs } from '../assets/img/icon/Armoury_Legs.svg';
+import { ReactComponent as MainArm } from '../assets/img/icon/Armoury_MainArm.svg';
+import { ReactComponent as Necklace } from '../assets/img/icon/Armoury_Necklace.svg';
+import { ReactComponent as Ring } from '../assets/img/icon/Armoury_Ring.svg';
+import { ReactComponent as Waist } from '../assets/img/icon/Armoury_Waist.svg';
      
 export const equipCategoryOptions = [
-    {codeList: ["main_hand", "off_hand"], name: "Weapon"},
-    {codeList: ["head"], name: "Head"},
-    {codeList: ["body"], name: "Body"},
-    {codeList: ["gloves"], name: "Gloves"},
-    {codeList: ["waist"], name: "Waist"},
-    {codeList: ["legs"], name: "Legs"},
-    {codeList: ["feet"], name: "Feet"},
-    {codeList: ["ears"], name: "Ears"},
-    {codeList: ["neck"], name: "Neck"},
-    {codeList: ["wrists"], name: "Wrists"},
-    {codeList: ["finger_l"], name: "Finger"},
+    {codeList: ["main_hand", "off_hand"], name: "Weapon", icon: MainArm},
+    {codeList: ["head"], name: "Head", icon: Head},
+    {codeList: ["body"], name: "Body", icon: Body},
+    {codeList: ["gloves"], name: "Gloves", icon: Hands},
+    {codeList: ["waist"], name: "Waist", icon: Waist},
+    {codeList: ["legs"], name: "Legs", icon: Legs},
+    {codeList: ["feet"], name: "Feet", icon: Feet},
+    {codeList: ["ears"], name: "Ears", icon: Earrings},
+    {codeList: ["neck"], name: "Neck", icon: Necklace},
+    {codeList: ["wrists"], name: "Wrists", icon: Bracelets},
+    {codeList: ["finger_l"], name: "Finger", icon: Ring},
 ];
      

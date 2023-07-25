@@ -2,16 +2,47 @@
 /* eslint-disable react/jsx-key */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Input, Table, Image, Button } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { Input, Table, Image, Button, Popover } from 'antd';
+import Icon from '@ant-design/icons';
+import { PlusOutlined, FilterFilled } from '@ant-design/icons';
 import Highlighter from 'react-highlight-words';
 
 function RecipeTable(props) {
   // eslint-disable-next-line react/prop-types
   // eslint-disable-next-line no-unused-vars
-  const { columns, data, onAddButtonClick } = props;
+  const { columns, data, filterOptions, onAddButtonClick } = props;
   const [filteredData, setFilteredData] = useState(data);
   const [value, setValue] = useState('');
+
+  const [selectedFilter, setSelectedFilter] = useState('');
+
+  const filterData = (searchText, category) => {
+    let currValue = value;
+    if(value !== searchText){
+      currValue = searchText;
+      setValue(currValue);
+    }
+    let curCategory = selectedFilter;
+    if(selectedFilter !== category){
+      curCategory = category;
+      setSelectedFilter(curCategory);
+    }
+    let equipFilterOptionCodeList = [];
+    if(curCategory == ''){
+      let allCodeList = [];
+      filterOptions.map((option) => {
+        console.log(option.codeList);
+        allCodeList = allCodeList.concat(option.codeList);
+      })
+      equipFilterOptionCodeList = allCodeList;
+    }
+    else equipFilterOptionCodeList = filterOptions.find(option => option.name === curCategory).codeList
+
+    const filteredData = data.filter((entry) =>
+      entry.name.toLowerCase().includes(currValue.toLowerCase()) && equipFilterOptionCodeList.includes(entry.equipcategory)
+    );
+    setFilteredData(filteredData);
+  }
 
   const addfilteredcolumns = () => {
     const newFilteredColumns = columns.map((column) => {
@@ -80,17 +111,37 @@ function RecipeTable(props) {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'right' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div>
+          {filterOptions.length !== 0 && (
+            <Popover placement="bottom" title="Category Filters" content={(
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                {filterOptions.map((option) => (
+                  <Button type={selectedFilter == option.name ? "primary" : "dashed"} icon={<Icon component={option.icon} />} style={{margin: 3}} 
+                    onClick={() => {
+                      if(selectedFilter !== option.name) {
+                        setSelectedFilter(option.name);
+                        filterData(value, option.name);
+                      }
+                      else{
+                        setSelectedFilter("");
+                        filterData(value, "");
+                      } 
+                    }
+                    }/>
+                ))}
+              </div>
+            )
+            }>
+              <FilterFilled style={{fontSize: 30, marginLeft: 20, color: selectedFilter!=='' ? '#4287f5' : '#808080'}} />
+            </Popover>
+          )}
+        </div>
         <Input
           placeholder="search item name"
           value={value}
           onChange={(e) => {
-            const currValue = e.target.value;
-            setValue(currValue);
-            const filteredData = data.filter((entry) =>
-              entry.name.toLowerCase().includes(currValue.toLowerCase())
-            );
-            setFilteredData(filteredData);
+            filterData(e.target.value, selectedFilter)
           }}
           style={{
             width: 200,
@@ -111,10 +162,12 @@ function RecipeTable(props) {
 RecipeTable.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
   data: PropTypes.array.isRequired,
+  filterOptions: PropTypes.array,
   onAddButtonClick: PropTypes.func,
 };
 
 RecipeTable.defaultProps = {
+  filterOptions: [],
   onAddButtonClick: () => {},
 };
 

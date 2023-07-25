@@ -12,6 +12,7 @@ import RecipeTable from '../molecules/RecipeTable';
 import i18n from '../../common/localize/i18n';
 
 import './scss/CrafterRecipes.scss';
+import { equipCategoryOptions } from '../../common/itemOption';
 
 function JobLevelingRecipes() {
   const [radioSelect, setRadioSelect] = useState('');
@@ -88,6 +89,7 @@ function JobLevelingRecipes() {
                   },
                 ]}
                 data={jobEquipmentList}
+                filterOptions={equipCategoryOptions}
                 onAddButtonClick={(value) => {
                   dispatch(garlandsActions.addCraftingList(value));
                 }}
