@@ -85,7 +85,7 @@ function CrafterRecipes() {
                 onAddButtonClick={(value) => {
                   dispatch(garlandsActions.addCraftingList(value));
                 }}
-                height='calc(80vh - 300px)'
+                height="calc(80vh - 300px)"
               />
             )}
           </Col>

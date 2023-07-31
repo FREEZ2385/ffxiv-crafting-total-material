@@ -143,7 +143,7 @@ export const actionJobRadioOptions = [
     value: 'SGE',
     text: 'sage',
     icon: actionJobIcons.Sage,
-  }
+  },
 ];
 
 export const crafterRecipesPullDownOptions = [

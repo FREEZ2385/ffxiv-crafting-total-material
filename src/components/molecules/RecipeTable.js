@@ -18,31 +18,36 @@ function RecipeTable(props) {
 
   const filterData = (searchText, category) => {
     let currValue = value;
-    if(value !== searchText){
+    if (value !== searchText) {
       currValue = searchText;
       setValue(currValue);
     }
     let curCategory = selectedFilter;
-    if(selectedFilter !== category){
+    if (selectedFilter !== category) {
       curCategory = category;
       setSelectedFilter(curCategory);
     }
     let equipFilterOptionCodeList = [];
-    if(curCategory == ''){
+    if (curCategory == '') {
       let allCodeList = [];
       filterOptions.map((option) => {
         console.log(option.codeList);
         allCodeList = allCodeList.concat(option.codeList);
-      })
+      });
       equipFilterOptionCodeList = allCodeList;
-    }
-    else equipFilterOptionCodeList = filterOptions.find(option => option.name === curCategory).codeList
+    } else
+      equipFilterOptionCodeList = filterOptions.find(
+        (option) => option.name === curCategory
+      ).codeList;
 
     const filteredData = data.filter((entry) =>
-      entry.name.toLowerCase().includes(currValue.toLowerCase()) && equipFilterOptionCodeList.includes(entry.equipcategory)
+      entry.name.toLowerCase().includes(currValue.toLowerCase()) &&
+      equipFilterOptionCodeList.length == 0
+        ? true
+        : equipFilterOptionCodeList.includes(entry.equipcategory)
     );
     setFilteredData(filteredData);
-  }
+  };
 
   const addfilteredcolumns = () => {
     const newFilteredColumns = columns.map((column) => {
@@ -111,29 +116,50 @@ function RecipeTable(props) {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          marginBottom: 5,
+        }}
+      >
         <div>
           {filterOptions.length !== 0 && (
-            <Popover placement="bottom" title="Category Filters" content={(
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                {filterOptions.map((option) => (
-                  <Button type={selectedFilter == option.name ? "primary" : "dashed"} icon={<Icon component={option.icon} />} style={{margin: 3}} 
-                    onClick={() => {
-                      if(selectedFilter !== option.name) {
-                        setSelectedFilter(option.name);
-                        filterData(value, option.name);
+            <Popover
+              placement="bottom"
+              title="Category Filters"
+              content={
+                <div
+                  style={{ display: 'flex', justifyContent: 'space-between' }}
+                >
+                  {filterOptions.map((option) => (
+                    <Button
+                      type={
+                        selectedFilter == option.name ? 'primary' : 'dashed'
                       }
-                      else{
-                        setSelectedFilter("");
-                        filterData(value, "");
-                      } 
-                    }
-                    }/>
-                ))}
-              </div>
-            )
-            }>
-              <FilterFilled style={{fontSize: 30, marginLeft: 20, color: selectedFilter!=='' ? '#4287f5' : '#808080'}} />
+                      icon={<Icon component={option.icon} />}
+                      style={{ margin: 3 }}
+                      onClick={() => {
+                        if (selectedFilter !== option.name) {
+                          setSelectedFilter(option.name);
+                          filterData(value, option.name);
+                        } else {
+                          setSelectedFilter('');
+                          filterData(value, '');
+                        }
+                      }}
+                    />
+                  ))}
+                </div>
+              }
+            >
+              <FilterFilled
+                style={{
+                  fontSize: 30,
+                  marginLeft: 20,
+                  color: selectedFilter !== '' ? '#4287f5' : '#808080',
+                }}
+              />
             </Popover>
           )}
         </div>
@@ -141,7 +167,8 @@ function RecipeTable(props) {
           placeholder="search item name"
           value={value}
           onChange={(e) => {
-            filterData(e.target.value, selectedFilter)
+            setValue(e.target.value);
+            filterData(e.target.value, selectedFilter);
           }}
           style={{
             width: 200,
