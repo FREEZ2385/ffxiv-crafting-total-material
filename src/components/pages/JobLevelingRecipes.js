@@ -93,7 +93,7 @@ function JobLevelingRecipes() {
                 onAddButtonClick={(value) => {
                   dispatch(garlandsActions.addCraftingList(value));
                 }}
-                height='calc(70vh - 300px)'
+                height="calc(70vh - 300px)"
               />
             )}
           </Col>

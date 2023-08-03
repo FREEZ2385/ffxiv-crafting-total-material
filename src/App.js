@@ -86,9 +86,8 @@ function App() {
           mode="inline"
           onClick={(item) => {
             setPageKey(item.key);
-            dispatch(commonActions.changePage())
-            }
-          }
+            dispatch(commonActions.changePage());
+          }}
           className="sidebar-area"
         >
           <Menu.Item

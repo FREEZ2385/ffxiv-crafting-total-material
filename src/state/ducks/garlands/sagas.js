@@ -49,6 +49,7 @@ function* doGetCraftRecipeList({ payload }) {
         recipe: data.recipes[0].id,
       };
     });
+    yield put(actions.clearCraftRecipeList());
     yield put(actions.getCraftRecipeListSuccess(itemList));
   } catch (e) {
     console.error('error of doGetCraftRecipeList');
@@ -74,7 +75,9 @@ function* doGetJobEquipmentList({ payload }) {
     const searchList = response.data['results'];
     const itemList = searchList.map((data) => {
       delete data.equip_slot_category.id;
-      const equipCategory = Object.keys(data.equip_slot_category).find(key => data.equip_slot_category[key] === 1);
+      const equipCategory = Object.keys(data.equip_slot_category).find(
+        (key) => data.equip_slot_category[key] === 1
+      );
       return {
         icon: `https://xivapi.com/${data.icon}`,
         name: data.name,
